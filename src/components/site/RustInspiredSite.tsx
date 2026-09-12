@@ -22,6 +22,7 @@ import avatar from "@/assets/avatar.webp";
 import "./rust-inspired.css";
 import { StackGlobe } from "./StackGlobe";
 import { SmoothScroll } from "./SmoothScroll";
+import { CustomCursor } from "./CustomCursor";
 import { MotionSection, AnimatedIcon, ServiceTransition, ScrollProgress } from "./SiteMotion";
 
 const whatsapp = "https://wa.me/5551996236798";
@@ -122,6 +123,7 @@ export function RustInspiredSite() {
   return (
     <div className={`sl-site${dark ? " sl-dark" : ""}`} id="top">
       <SmoothScroll />
+      <CustomCursor />
       <a className="sl-skip" href="#conteudo-principal">
         Pular para o conteúdo
       </a>

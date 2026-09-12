@@ -1,5 +1,5 @@
 import siteContent from "@/content/site.json";
-export const SITE_URL = "https://shinodalabs.com";
+export const SITE_URL = "https://www.shinodalabs.com";
 export const SITE_NAME = "ShinodaLabs";
 export const SITE_LOCALE = "pt_BR";
 export const SITE_LANGUAGE = "pt-BR";

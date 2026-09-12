@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shinodalabs.com/sitemap.xml
+Sitemap: https://www.shinodalabs.com/sitemap.xml

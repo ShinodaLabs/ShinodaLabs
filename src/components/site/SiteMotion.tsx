@@ -54,9 +54,7 @@ export function MotionSection({
       );
     });
     root
-      .querySelectorAll<HTMLElement>(
-        ".sl-button, .sl-project, .sl-tech-grid > div, .sl-contact-card",
-      )
+      .querySelectorAll<HTMLElement>(".sl-project, .sl-tech-grid > div, .sl-contact-card")
       .forEach((element) => {
         let hoverAnimation: ReturnType<typeof animate> | undefined;
         const enter = () => {
