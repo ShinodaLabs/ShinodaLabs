@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import type { Globe } from "cobe";
+import type { Globe, COBEOptions } from "cobe";
 
 const stacks = [
   { name: "React", icon: "react", color: "#087ea4", url: "https://react.dev" },
@@ -52,7 +52,33 @@ function projectMarker([latitude, longitude]: [number, number], phi: number, the
   };
 }
 
-export function StackGlobe() {
+function globePalette(dark: boolean): Partial<COBEOptions> {
+  return dark
+    ? {
+        dark: 1,
+        diffuse: 1.6,
+        mapBrightness: 4.5,
+        mapBaseBrightness: 0.035,
+        baseColor: [0.19, 0.25, 0.37],
+        glowColor: [0.06, 0.12, 0.25],
+      }
+    : {
+        dark: 0,
+        diffuse: 1.2,
+        mapBrightness: 3,
+        mapBaseBrightness: 0,
+        baseColor: [0.86, 0.91, 1],
+        glowColor: [0.88, 0.94, 1],
+      };
+}
+
+export function StackGlobe({ dark = false }: { dark?: boolean }) {
+  const theme = useRef(dark);
+  const instance = useRef<Globe | null>(null);
+  useEffect(() => {
+    theme.current = dark;
+    instance.current?.update(globePalette(dark));
+  }, [dark]);
   const host = useRef<HTMLDivElement>(null);
   const labels = useRef<(HTMLAnchorElement | null)[]>([]);
   const controls = useRef({
@@ -185,6 +211,8 @@ export function StackGlobe() {
           arcWidth: 0.5,
           arcHeight: 0.18,
         });
+        instance.current = globe;
+        globe.update(globePalette(theme.current));
         setStatus("ready");
         draw();
         start();
@@ -211,6 +239,7 @@ export function StackGlobe() {
       media.removeEventListener("change", preference);
       canvas.removeEventListener("webglcontextlost", onContextLost);
       globe?.destroy();
+      instance.current = null;
       element.replaceChildren();
       redraw.current = () => {};
     };

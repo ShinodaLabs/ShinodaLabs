@@ -1,23 +1,17 @@
-import { useEffect, useState } from "react";
 import {
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  ChevronDown,
-  Code2,
-  Github,
   Globe,
   Layers,
-  Menu,
-  Moon,
+  Code2,
   MousePointer2,
-  Rocket,
-  Search,
   ShieldCheck,
-  Sun,
-  X,
+  Search,
   Zap,
-} from "lucide-react";
+  Rocket,
+  ArrowRight,
+  ArrowUpRight,
+} from "./LucideAnimated";
+import { useEffect, useState } from "react";
+import { Check, ChevronDown, Github, Menu, Moon, Sun, X } from "lucide-react";
 import p1 from "@/assets/project-1.webp";
 import p2 from "@/assets/project-2.webp";
 import p3 from "@/assets/project-3.webp";
@@ -26,6 +20,8 @@ import p5 from "@/assets/project-5.webp";
 import avatar from "@/assets/avatar.webp";
 import "./rust-inspired.css";
 import { StackGlobe } from "./StackGlobe";
+import { SmoothScroll } from "./SmoothScroll";
+import { MotionSection, AnimatedIcon, ServiceTransition, ScrollProgress } from "./SiteMotion";
 
 const whatsapp = "https://wa.me/5551996236798";
 const services = [
@@ -158,7 +154,6 @@ function SectionTitle({ eyebrow, title, text }: { eyebrow: string; title: string
 }
 export function RustInspiredSite() {
   const [menu, setMenu] = useState(false);
-  const [announcement, setAnnouncement] = useState(true);
   const [dark, setDark] = useState(false);
   const [active, setActive] = useState(0);
   useEffect(() => {
@@ -178,23 +173,12 @@ export function RustInspiredSite() {
   };
   return (
     <div className={`sl-site${dark ? " sl-dark" : ""}`} id="top">
+      <SmoothScroll />
       <a className="sl-skip" href="#conteudo-principal">
         Pular para o conteúdo
       </a>
-      {announcement && (
-        <div className="sl-announcement">
-          <a href="#contact">
-            <span>VAMOS CRIAR</span> Seu próximo projeto começa aqui.{" "}
-            <strong>
-              Converse com o estúdio <ArrowRight size={14} />
-            </strong>
-          </a>
-          <button aria-label="Fechar aviso" onClick={() => setAnnouncement(false)}>
-            <X size={16} />
-          </button>
-        </div>
-      )}
       <header className="sl-header">
+        <ScrollProgress />
         <div className="sl-container sl-nav">
           <a href="#top" aria-label="ShinodaLabs — início">
             <Brand />
@@ -264,7 +248,7 @@ export function RustInspiredSite() {
         )}
       </header>
       <main id="conteudo-principal">
-        <section className="sl-hero">
+        <MotionSection className="sl-hero" background="mesh">
           <div className="sl-container">
             <div className="sl-hero-grid">
               <div>
@@ -297,7 +281,7 @@ export function RustInspiredSite() {
                   </a>
                 </div>
               </div>
-              <StackGlobe />
+              <StackGlobe dark={dark} />
             </div>
             <dl className="sl-stats">
               {[
@@ -313,8 +297,8 @@ export function RustInspiredSite() {
               ))}
             </dl>
           </div>
-        </section>
-        <section className="sl-section sl-ecosystem">
+        </MotionSection>
+        <MotionSection className="sl-section sl-ecosystem">
           <div className="sl-container">
             <SectionTitle
               eyebrow="ECOSSISTEMA DE DESENVOLVIMENTO"
@@ -337,14 +321,14 @@ export function RustInspiredSite() {
                 ["◎", "Web APIs"],
               ].map(([mark, label]) => (
                 <div key={label}>
-                  <span>{mark}</span>
+                  <AnimatedIcon>{mark}</AnimatedIcon>
                   {label}
                 </div>
               ))}
             </div>
           </div>
-        </section>
-        <section className="sl-section" id="about">
+        </MotionSection>
+        <MotionSection className="sl-section" id="about">
           <div className="sl-container">
             <SectionTitle
               eyebrow="UMA BASE BEM CONSTRUÍDA"
@@ -437,8 +421,8 @@ export function RustInspiredSite() {
               </article>
             </div>
           </div>
-        </section>
-        <section className="sl-section" id="services">
+        </MotionSection>
+        <MotionSection className="sl-section" id="services" background="orbits">
           <div className="sl-container">
             <SectionTitle
               eyebrow="SOLUÇÕES DIGITAIS"
@@ -486,33 +470,35 @@ export function RustInspiredSite() {
               aria-labelledby={`service-tab-${active}`}
               tabIndex={0}
             >
-              <div>
-                <p className="sl-eyebrow">{service.tag}</p>
-                <h3>{service.name}</h3>
-                <p>{service.description}</p>
-                <a href="#contact" className="sl-text-link">
-                  Vamos conversar <ArrowRight size={16} />
-                </a>
-              </div>
-              <div className="sl-service-visual">
-                <div className="sl-visual-core">
-                  <service.icon size={25} />
-                  <code>{service.code}</code>
+              <ServiceTransition active={active}>
+                <div>
+                  <p className="sl-eyebrow">{service.tag}</p>
+                  <h3>{service.name}</h3>
+                  <p>{service.description}</p>
+                  <a href="#contact" className="sl-text-link">
+                    Vamos conversar <ArrowRight size={16} />
+                  </a>
                 </div>
-                <div className="sl-visual-branches">
-                  {service.points.map((point) => (
-                    <span key={point}>
-                      <Check size={15} />
-                      {point}
-                    </span>
-                  ))}
+                <div className="sl-service-visual">
+                  <div className="sl-visual-core">
+                    <service.icon size={25} />
+                    <code>{service.code}</code>
+                  </div>
+                  <div className="sl-visual-branches">
+                    {service.points.map((point) => (
+                      <span key={point}>
+                        <Check size={15} />
+                        {point}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="sl-visual-caption">ESTRATÉGIA → DESIGN → DESENVOLVIMENTO</span>
                 </div>
-                <span className="sl-visual-caption">ESTRATÉGIA → DESIGN → DESENVOLVIMENTO</span>
-              </div>
+              </ServiceTransition>
             </div>
           </div>
-        </section>
-        <section className="sl-section" id="process">
+        </MotionSection>
+        <MotionSection className="sl-section" id="process">
           <div className="sl-container">
             <SectionTitle
               eyebrow="PROCESSO TRANSPARENTE"
@@ -552,8 +538,8 @@ export function RustInspiredSite() {
               ))}
             </div>
           </div>
-        </section>
-        <section className="sl-section" id="work">
+        </MotionSection>
+        <MotionSection className="sl-section" id="work" background="mesh">
           <div className="sl-container">
             <SectionTitle
               eyebrow="PROJETOS SELECIONADOS"
@@ -591,8 +577,8 @@ export function RustInspiredSite() {
               ))}
             </div>
           </div>
-        </section>
-        <section className="sl-section">
+        </MotionSection>
+        <MotionSection className="sl-section" background="aurora">
           <div className="sl-container">
             <SectionTitle
               eyebrow="DESIGN COM DIREÇÃO"
@@ -633,8 +619,8 @@ export function RustInspiredSite() {
               </div>
             </div>
           </div>
-        </section>
-        <section className="sl-section" id="contact">
+        </MotionSection>
+        <MotionSection className="sl-section" id="contact">
           <div className="sl-container">
             <SectionTitle
               eyebrow="CONTATO DIRETO"
@@ -661,7 +647,7 @@ export function RustInspiredSite() {
               shinodalabs@gmail.com <ArrowUpRight size={14} />
             </a>
           </div>
-        </section>
+        </MotionSection>
       </main>
       <footer className="sl-footer">
         <div className="sl-container">

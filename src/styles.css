@@ -119,8 +119,8 @@
   }
 
   ::selection {
-    background-color: var(--teal);
-    color: var(--background);
+    background-color: #2568f5;
+    color: #ffffff;
   }
 }
 
