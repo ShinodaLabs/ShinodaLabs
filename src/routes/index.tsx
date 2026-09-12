@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
     links: [
       buildCanonicalLink("/"),
       { rel: "describedby", href: "/llms.txt", type: "text/plain" },
-      { rel: "alternate", href: "/index.md", type: "text/markdown", title: "ShinodaLabs em texto" },
+      { rel: "alternate", href: "/site-content.md", type: "text/markdown", title: "ShinodaLabs em texto" },
     ],
     scripts: [
       {

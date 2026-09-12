@@ -9,7 +9,7 @@ Site oficial em português do Brasil: https://shinodalabs.com/
 
 ## Conteúdo
 
-- [Apresentação completa em Markdown](https://shinodalabs.com/index.md): serviços, perguntas frequentes e canais de contato.
+- [Apresentação completa em Markdown](https://shinodalabs.com/site-content.md): serviços, perguntas frequentes e canais de contato.
 - [Sobre o estúdio](https://shinodalabs.com/#about): design e desenvolvimento com atenção aos detalhes.
 - [Soluções digitais](https://shinodalabs.com/#services): serviços oferecidos.
 - [Processo](https://shinodalabs.com/#process): discovery, estratégia, design, engenharia e lançamento.
@@ -65,6 +65,6 @@ ${content.faq.map((f) => `### ${f.question}\n\n${f.answer}`).join("\n\n")}
 `;
 await Promise.all([
   writeFile(new URL("public/llms.txt", root), summary),
-  writeFile(new URL("public/index.md", root), full),
+  writeFile(new URL("public/site-content.md", root), full),
 ]);
-console.log("Generated llms.txt and index.md from shared service and FAQ content.");
+console.log("Generated llms.txt and site-content.md from shared service and FAQ content.");
