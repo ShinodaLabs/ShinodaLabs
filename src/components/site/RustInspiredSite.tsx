@@ -1,3 +1,4 @@
+import siteContent from "@/content/site.json";
 import {
   Globe,
   Layers,
@@ -10,7 +11,7 @@ import {
   ArrowRight,
   ArrowUpRight,
 } from "./LucideAnimated";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check, ChevronDown, Github, Menu, Moon, Sun, X } from "lucide-react";
 import p1 from "@/assets/project-1.webp";
 import p2 from "@/assets/project-2.webp";
@@ -24,80 +25,12 @@ import { SmoothScroll } from "./SmoothScroll";
 import { MotionSection, AnimatedIcon, ServiceTransition, ScrollProgress } from "./SiteMotion";
 
 const whatsapp = "https://wa.me/5551996236798";
-const services = [
-  {
-    name: "Sites institucionais",
-    tag: "Web presence",
-    code: "<website />",
-    icon: Globe,
-    description:
-      "Uma presença digital à altura da sua empresa. Arquitetura de conteúdo clara, design exclusivo e uma experiência que transforma interesse em confiança.",
-    points: ["Identidade da marca", "Conteúdo estruturado", "Contato simplificado"],
-  },
-  {
-    name: "Landing pages",
-    tag: "Conversion",
-    code: "onClick()",
-    icon: MousePointer2,
-    description:
-      "Páginas com uma direção clara: converter. Da primeira dobra à chamada para ação, cada detalhe conecta a sua oferta às pessoas certas.",
-    points: ["Narrativa de venda", "Foco na conversão", "Integração com campanhas"],
-  },
-  {
-    name: "Design de interfaces",
-    tag: "Experience",
-    code: "design.tokens",
-    icon: Layers,
-    description:
-      "Interfaces que equilibram personalidade e facilidade de uso. Um sistema visual consistente, com componentes pensados para todas as telas.",
-    points: ["UI & UX", "Design system", "Protótipos navegáveis"],
-  },
-  {
-    name: "Desenvolvimento web",
-    tag: "Engineering",
-    code: "npm run build",
-    icon: Code2,
-    description:
-      "Engenharia front-end com React, TypeScript e uma arquitetura modular. Código organizado para evoluir junto com o seu negócio.",
-    points: ["Componentes reutilizáveis", "Tipagem forte", "Arquitetura escalável"],
-  },
-  {
-    name: "SEO técnico",
-    tag: "Discovery",
-    code: "index.follow",
-    icon: Search,
-    description:
-      "Uma base técnica preparada para os mecanismos de busca. Semântica, metadados e estrutura de navegação para facilitar a descoberta do seu site.",
-    points: ["HTML semântico", "Dados estruturados", "Metadados e sitemap"],
-  },
-  {
-    name: "Performance web",
-    tag: "Performance",
-    code: "web.vitals",
-    icon: Zap,
-    description:
-      "Experiências rápidas em qualquer dispositivo. Otimização de imagens, carregamento inteligente e atenção aos Core Web Vitals desde o desenvolvimento.",
-    points: ["Imagens otimizadas", "Carregamento eficiente", "Core Web Vitals"],
-  },
-  {
-    name: "Deploy & lançamento",
-    tag: "Delivery",
-    code: "deploy --prod",
-    icon: Rocket,
-    description:
-      "Do ambiente de desenvolvimento ao site no ar. Publicação, configuração de domínio e verificação dos fluxos para um lançamento tranquilo.",
-    points: ["Configuração de domínio", "Deploy em nuvem", "Validação de fluxos"],
-  },
-  {
-    name: "Evolução contínua",
-    tag: "Growth",
-    code: "version.next",
-    icon: ShieldCheck,
-    description:
-      "Seu site acompanha as próximas etapas da empresa. Melhorias, novas páginas e ajustes guiados pelas necessidades reais do negócio.",
-    points: ["Novas funcionalidades", "Manutenção", "Melhorias de experiência"],
-  },
-];
+const serviceIcons = [Globe, MousePointer2, Layers, Code2, Search, Zap, Rocket, ShieldCheck];
+const services = siteContent.services.map((service, index) => ({
+  ...service,
+  icon: serviceIcons[index],
+}));
+
 const projects = [
   {
     image: p1,
@@ -154,22 +87,37 @@ function SectionTitle({ eyebrow, title, text }: { eyebrow: string; title: string
 }
 export function RustInspiredSite() {
   const [menu, setMenu] = useState(false);
-  const [dark, setDark] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesButton = useRef<HTMLButtonElement>(null);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const [dark, setDark] = useState(true);
   const [active, setActive] = useState(0);
   useEffect(() => {
-    setDark(localStorage.getItem("shinoda-theme") === "dark");
+    try {
+      setDark(localStorage.getItem("shinoda-theme") !== "light");
+    } catch {
+      // Keep the default theme when browser storage is unavailable.
+    }
   }, []);
   useEffect(() => {
     const handle = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenu(false);
+      if (event.key === "Escape") {
+        if (menu) menuButton.current?.focus();
+        if (servicesOpen) servicesButton.current?.focus();
+        setMenu(false);
+        setServicesOpen(false);
+      }
     };
     window.addEventListener("keydown", handle);
     return () => window.removeEventListener("keydown", handle);
-  }, []);
-  const service = services[active];
+  }, [menu, servicesOpen]);
   const toggleTheme = () => {
     setDark(!dark);
-    localStorage.setItem("shinoda-theme", !dark ? "dark" : "light");
+    try {
+      localStorage.setItem("shinoda-theme", !dark ? "dark" : "light");
+    } catch {
+      // Theme switching still works without persistence.
+    }
   };
   return (
     <div className={`sl-site${dark ? " sl-dark" : ""}`} id="top">
@@ -184,13 +132,30 @@ export function RustInspiredSite() {
             <Brand />
           </a>
           <nav className="sl-desktop-nav" aria-label="Navegação principal">
-            <div className="sl-dropdown">
-              <button>
+            <div
+              className="sl-dropdown"
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) setServicesOpen(false);
+              }}
+            >
+              <button
+                ref={servicesButton}
+                aria-expanded={servicesOpen}
+                aria-controls="sl-services-nav"
+                onClick={() => setServicesOpen(!servicesOpen)}
+              >
                 Serviços <ChevronDown size={12} />
               </button>
-              <div className="sl-dropdown-panel">
+              <div className="sl-dropdown-panel" id="sl-services-nav" hidden={!servicesOpen}>
                 {services.slice(0, 4).map((s, i) => (
-                  <a key={s.name} href="#services" onClick={() => setActive(i)}>
+                  <a
+                    key={s.name}
+                    href="#services"
+                    onClick={() => {
+                      setActive(i);
+                      setServicesOpen(false);
+                    }}
+                  >
                     <s.icon size={17} />
                     <span>{s.name}</span>
                     <ArrowUpRight size={14} />
@@ -209,6 +174,7 @@ export function RustInspiredSite() {
               target="_blank"
               rel="noreferrer"
               className="sl-github"
+              aria-label="GitHub da ShinodaLabs"
             >
               <Github size={17} />
               <span>GitHub</span>
@@ -221,6 +187,7 @@ export function RustInspiredSite() {
             </button>
             <button
               className="sl-menu-toggle"
+              ref={menuButton}
               aria-label={menu ? "Fechar menu" : "Abrir menu"}
               aria-expanded={menu}
               aria-controls="sl-mobile-nav"
@@ -247,7 +214,7 @@ export function RustInspiredSite() {
           </nav>
         )}
       </header>
-      <main id="conteudo-principal">
+      <main id="conteudo-principal" tabIndex={-1}>
         <MotionSection className="sl-hero" background="mesh">
           <div className="sl-container">
             <div className="sl-hero-grid">
@@ -436,7 +403,7 @@ export function RustInspiredSite() {
                   id={`service-tab-${i}`}
                   role="tab"
                   aria-selected={active === i}
-                  aria-controls="service-panel"
+                  aria-controls={`service-panel-${i}`}
                   tabIndex={active === i ? 0 : -1}
                   onClick={() => setActive(i)}
                   onKeyDown={(e) => {
@@ -463,39 +430,43 @@ export function RustInspiredSite() {
                 </button>
               ))}
             </div>
-            <div
-              className="sl-service-panel"
-              id="service-panel"
-              role="tabpanel"
-              aria-labelledby={`service-tab-${active}`}
-              tabIndex={0}
-            >
-              <ServiceTransition active={active}>
-                <div>
-                  <p className="sl-eyebrow">{service.tag}</p>
-                  <h3>{service.name}</h3>
-                  <p>{service.description}</p>
-                  <a href="#contact" className="sl-text-link">
-                    Vamos conversar <ArrowRight size={16} />
-                  </a>
-                </div>
-                <div className="sl-service-visual">
-                  <div className="sl-visual-core">
-                    <service.icon size={25} />
-                    <code>{service.code}</code>
+            {services.map((service, index) => (
+              <div
+                className="sl-service-panel"
+                id={`service-panel-${index}`}
+                key={service.name}
+                hidden={active !== index}
+                role="tabpanel"
+                aria-labelledby={`service-tab-${index}`}
+                tabIndex={0}
+              >
+                <ServiceTransition active={index}>
+                  <div>
+                    <p className="sl-eyebrow">{service.tag}</p>
+                    <h3>{service.name}</h3>
+                    <p>{service.description}</p>
+                    <a href="#contact" className="sl-text-link">
+                      Vamos conversar <ArrowRight size={16} />
+                    </a>
                   </div>
-                  <div className="sl-visual-branches">
-                    {service.points.map((point) => (
-                      <span key={point}>
-                        <Check size={15} />
-                        {point}
-                      </span>
-                    ))}
+                  <div className="sl-service-visual">
+                    <div className="sl-visual-core">
+                      <service.icon size={25} />
+                      <code>{service.code}</code>
+                    </div>
+                    <div className="sl-visual-branches">
+                      {service.points.map((point) => (
+                        <span key={point}>
+                          <Check size={15} />
+                          {point}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="sl-visual-caption">ESTRATÉGIA → DESIGN → DESENVOLVIMENTO</span>
                   </div>
-                  <span className="sl-visual-caption">ESTRATÉGIA → DESIGN → DESENVOLVIMENTO</span>
-                </div>
-              </ServiceTransition>
-            </div>
+                </ServiceTransition>
+              </div>
+            ))}
           </div>
         </MotionSection>
         <MotionSection className="sl-section" id="process">
@@ -620,6 +591,23 @@ export function RustInspiredSite() {
             </div>
           </div>
         </MotionSection>
+        <MotionSection className="sl-section" id="faq">
+          <div className="sl-container">
+            <SectionTitle
+              eyebrow="PERGUNTAS FREQUENTES"
+              title="Antes de começar"
+              text="Respostas diretas sobre o estúdio e como iniciar seu projeto."
+            />
+            <div className="sl-faq">
+              {siteContent.faq.map((item) => (
+                <details key={item.question}>
+                  <summary>{item.question}</summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </MotionSection>
         <MotionSection className="sl-section" id="contact">
           <div className="sl-container">
             <SectionTitle
@@ -675,6 +663,7 @@ export function RustInspiredSite() {
               <a href="#about">Sobre a ShinodaLabs</a>
               <a href="#work">Projetos selecionados</a>
               <a href="#process">Nosso processo</a>
+              <a href="#faq">Perguntas frequentes</a>
               <a href="#contact">Contato</a>
             </div>
             <div>

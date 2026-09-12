@@ -1,3 +1,4 @@
+import siteContent from "@/content/site.json";
 export const SITE_URL = "https://shinodalabs.com";
 export const SITE_NAME = "ShinodaLabs";
 export const SITE_LOCALE = "pt_BR";
@@ -41,38 +42,8 @@ export const HOME_DESCRIPTION =
 
 export const ROOT_TITLE = `${SITE_NAME} | Criação de sites, landing pages e produtos digitais`;
 
-export const SERVICE_TYPES = [
-  "Criação de sites",
-  "Desenvolvimento de sites",
-  "Landing pages",
-  "Desenvolvimento web",
-  "SEO técnico",
-  "Sites profissionais",
-  "Design de produto digital",
-] as const;
-
-export const FAQ_ITEMS = [
-  {
-    question: "O que a ShinodaLabs faz?",
-    answer:
-      "A ShinodaLabs é um estúdio digital que cria sites, landing pages e produtos digitais premium com foco em conversão, performance e SEO técnico.",
-  },
-  {
-    question: "Quais serviços são oferecidos?",
-    answer:
-      "Criação de sites profissionais, landing pages, design premium, engenharia front-end, SEO técnico, otimização de performance e lançamento digital.",
-  },
-  {
-    question: "Para quem é indicado?",
-    answer:
-      "Para empresas, fundadores e marcas que precisam de presença digital memorável, alta performance e sites preparados para converter tráfego em clientes.",
-  },
-  {
-    question: "Como iniciar um projeto?",
-    answer:
-      "Entre em contato pelo formulário ou WhatsApp. A resposta é personalizada em até 24 horas, com briefing, escopo e próximos passos claros.",
-  },
-] as const;
+export const SERVICE_TYPES = siteContent.services.map((service) => service.name);
+export const FAQ_ITEMS = siteContent.faq;
 
 type MetaTag =
   | { title: string }
@@ -118,10 +89,12 @@ export function buildMetaTags(options: {
     { name: "robots", content: options.robots ?? "index, follow" },
     {
       name: "googlebot",
-      content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+      content:
+        options.robots ??
+        "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
     },
-    { name: "theme-color", content: "#ffffff" },
-    { name: "color-scheme", content: "light dark" },
+    { name: "theme-color", content: "#111113" },
+    { name: "color-scheme", content: "dark light" },
     { name: "format-detection", content: "telephone=no" },
     { property: "og:title", content: options.title },
     { property: "og:description", content: options.description },
@@ -193,7 +166,7 @@ export function buildStructuredDataGraph(path = "/") {
         inLanguage: SITE_LANGUAGE,
       },
       {
-        "@type": "ProfessionalService",
+        "@type": "Service",
         "@id": `${SITE_URL}/#service`,
         name: SITE_NAME,
         url: SITE_URL,
@@ -201,12 +174,7 @@ export function buildStructuredDataGraph(path = "/") {
         description: SITE_DESCRIPTION,
         email: SITE_EMAIL,
         telephone: SITE_PHONE,
-        areaServed: [
-          { "@type": "Country", name: "Brasil" },
-          { "@type": "City", name: "São Paulo" },
-          { "@type": "City", name: "Porto Alegre" },
-        ],
-        priceRange: "$$",
+        areaServed: [{ "@type": "Country", name: "Brasil" }],
         serviceType: [...SERVICE_TYPES],
         provider: { "@id": `${SITE_URL}/#organization` },
         hasOfferCatalog: {
@@ -218,6 +186,7 @@ export function buildStructuredDataGraph(path = "/") {
             itemOffered: {
               "@type": "Service",
               name: service,
+              description: siteContent.services[index].description,
               provider: { "@id": `${SITE_URL}/#organization` },
             },
           })),

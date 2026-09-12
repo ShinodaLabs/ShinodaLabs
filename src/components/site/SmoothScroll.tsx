@@ -9,8 +9,7 @@ export function SmoothScroll() {
       smoothWheel: true,
       syncTouch: false,
       lerp: 0.09,
-      // Keep navigation animated as requested, including on reduced-motion systems.
-      respectReducedMotion: false,
+      respectReducedMotion: true,
       anchors: {
         duration: 1.4,
         lerp: 0,

@@ -6,6 +6,7 @@ import {
   SITE_KEYWORDS,
   buildCanonicalLink,
   buildMetaTags,
+  buildStructuredDataGraph,
 } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -17,6 +18,16 @@ export const Route = createFileRoute("/")({
       keywords: SITE_KEYWORDS,
       path: "/",
     }),
-    links: [buildCanonicalLink("/")],
+    links: [
+      buildCanonicalLink("/"),
+      { rel: "describedby", href: "/llms.txt", type: "text/plain" },
+      { rel: "alternate", href: "/index.md", type: "text/markdown", title: "ShinodaLabs em texto" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(buildStructuredDataGraph("/")).replace(/</g, "\\u003c"),
+      },
+    ],
   }),
 });

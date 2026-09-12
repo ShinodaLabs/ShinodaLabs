@@ -8,7 +8,6 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { DeferredAnalytics } from "@/components/site/DeferredAnalytics";
-import { buildCanonicalLink, buildMetaTags, buildStructuredDataGraph } from "@/lib/seo";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -73,8 +72,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#ffffff" },
-      { name: "color-scheme", content: "light dark" },
+      { name: "theme-color", content: "#111113" },
+      { name: "color-scheme", content: "dark light" },
     ],
     links: [
       {
@@ -104,16 +103,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
-  const structuredData = buildStructuredDataGraph("/");
-
   return (
     <html lang="pt-BR">
       <head>
         <HeadContent />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
       </head>
       <body>
         {children}

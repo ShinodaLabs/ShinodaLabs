@@ -14,7 +14,12 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "optimize-images": "node scripts/optimize-images.mjs"
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "generate:ai": "node scripts/generate-ai-content.mjs",
+    "predev": "npm run generate:ai",
+    "prebuild": "npm run generate:ai",
+    "prebuild:vercel": "npm run generate:ai",
+    "prebuild:dev": "npm run generate:ai"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",

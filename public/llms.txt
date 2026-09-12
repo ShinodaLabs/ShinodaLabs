@@ -1,0 +1,15 @@
+# ShinodaLabs
+
+> Estúdio digital independente de Rodrigo, especializado em sites e landing pages sob medida, design de interfaces, desenvolvimento web, SEO técnico e performance.
+
+Site oficial em português do Brasil: https://shinodalabs.com/
+
+## Conteúdo
+
+- [Apresentação completa em Markdown](https://shinodalabs.com/index.md): serviços, perguntas frequentes e canais de contato.
+- [Sobre o estúdio](https://shinodalabs.com/#about): design e desenvolvimento com atenção aos detalhes.
+- [Soluções digitais](https://shinodalabs.com/#services): serviços oferecidos.
+- [Processo](https://shinodalabs.com/#process): discovery, estratégia, design, engenharia e lançamento.
+- [Projetos](https://shinodalabs.com/#work): Alma & Pata, Lumière, VLTGE, Aurelius Imobiliária e Oliveira & Martins.
+- [Perguntas frequentes](https://shinodalabs.com/#faq): respostas sobre o estúdio e como começar.
+- [Contato](https://shinodalabs.com/#contact): WhatsApp e e-mail.

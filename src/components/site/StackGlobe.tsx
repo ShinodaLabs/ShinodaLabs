@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { Globe, COBEOptions } from "cobe";
+import { Pause, Play } from "lucide-react";
 
 const stacks = [
   { name: "React", icon: "react", color: "#087ea4", url: "https://react.dev" },
@@ -73,6 +74,8 @@ function globePalette(dark: boolean): Partial<COBEOptions> {
 }
 
 export function StackGlobe({ dark = false }: { dark?: boolean }) {
+  const [paused, setPaused] = useState(false);
+  const pausedRef = useRef(false);
   const theme = useRef(dark);
   const instance = useRef<Globe | null>(null);
   useEffect(() => {
@@ -129,7 +132,13 @@ export function StackGlobe({ dark = false }: { dark?: boolean }) {
       if (disposed || !visible || document.hidden) return;
       const elapsed = lastTime ? Math.min((now - lastTime) / 1000, 0.25) : 0;
       lastTime = now;
-      if (!state.dragging) state.phi += elapsed * (state.reduced ? 0.08 : 0.22);
+      if (
+        !state.dragging &&
+        !state.reduced &&
+        !pausedRef.current &&
+        !element.parentElement?.contains(document.activeElement)
+      )
+        state.phi += elapsed * 0.22;
       state.theta += (state.targetTheta - state.theta) * 0.045;
       draw();
       frame = requestAnimationFrame(animate);
@@ -322,6 +331,20 @@ export function StackGlobe({ dark = false }: { dark?: boolean }) {
             );
           })}
         </div>
+      </div>
+      <div className="sl-globe-controls">
+        <button
+          type="button"
+          aria-label={paused ? "Retomar rotação do globo" : "Pausar rotação do globo"}
+          aria-pressed={paused}
+          title={paused ? "Retomar rotação" : "Pausar rotação"}
+          onClick={() => {
+            pausedRef.current = !paused;
+            setPaused(!paused);
+          }}
+        >
+          {paused ? <Play size={16} aria-hidden="true" /> : <Pause size={16} aria-hidden="true" />}
+        </button>
       </div>
     </div>
   );

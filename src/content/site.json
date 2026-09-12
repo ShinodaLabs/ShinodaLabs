@@ -1,0 +1,78 @@
+{
+  "services": [
+    {
+      "name": "Sites institucionais",
+      "tag": "Web presence",
+      "code": "<website />",
+      "description": "Uma presença digital à altura da sua empresa. Arquitetura de conteúdo clara, design exclusivo e uma experiência que transforma interesse em confiança.",
+      "points": ["Identidade da marca", "Conteúdo estruturado", "Contato simplificado"]
+    },
+    {
+      "name": "Landing pages",
+      "tag": "Conversion",
+      "code": "onClick()",
+      "description": "Páginas com uma direção clara: converter. Da primeira dobra à chamada para ação, cada detalhe conecta a sua oferta às pessoas certas.",
+      "points": ["Narrativa de venda", "Foco na conversão", "Integração com campanhas"]
+    },
+    {
+      "name": "Design de interfaces",
+      "tag": "Experience",
+      "code": "design.tokens",
+      "description": "Interfaces que equilibram personalidade e facilidade de uso. Um sistema visual consistente, com componentes pensados para todas as telas.",
+      "points": ["UI & UX", "Design system", "Protótipos navegáveis"]
+    },
+    {
+      "name": "Desenvolvimento web",
+      "tag": "Engineering",
+      "code": "npm run build",
+      "description": "Engenharia front-end com React, TypeScript e uma arquitetura modular. Código organizado para evoluir junto com o seu negócio.",
+      "points": ["Componentes reutilizáveis", "Tipagem forte", "Arquitetura escalável"]
+    },
+    {
+      "name": "SEO técnico",
+      "tag": "Discovery",
+      "code": "index.follow",
+      "description": "Uma base técnica preparada para os mecanismos de busca. Semântica, metadados e estrutura de navegação para facilitar a descoberta do seu site.",
+      "points": ["HTML semântico", "Dados estruturados", "Metadados e sitemap"]
+    },
+    {
+      "name": "Performance web",
+      "tag": "Performance",
+      "code": "web.vitals",
+      "description": "Experiências rápidas em qualquer dispositivo. Otimização de imagens, carregamento inteligente e atenção aos Core Web Vitals desde o desenvolvimento.",
+      "points": ["Imagens otimizadas", "Carregamento eficiente", "Core Web Vitals"]
+    },
+    {
+      "name": "Deploy & lançamento",
+      "tag": "Delivery",
+      "code": "deploy --prod",
+      "description": "Do ambiente de desenvolvimento ao site no ar. Publicação, configuração de domínio e verificação dos fluxos para um lançamento tranquilo.",
+      "points": ["Configuração de domínio", "Deploy em nuvem", "Validação de fluxos"]
+    },
+    {
+      "name": "Evolução contínua",
+      "tag": "Growth",
+      "code": "version.next",
+      "description": "Seu site acompanha as próximas etapas da empresa. Melhorias, novas páginas e ajustes guiados pelas necessidades reais do negócio.",
+      "points": ["Novas funcionalidades", "Manutenção", "Melhorias de experiência"]
+    }
+  ],
+  "faq": [
+    {
+      "question": "O que a ShinodaLabs faz?",
+      "answer": "A ShinodaLabs é um estúdio digital que cria sites, landing pages e produtos digitais premium com foco em conversão, performance e SEO técnico."
+    },
+    {
+      "question": "Quais serviços são oferecidos?",
+      "answer": "Criação de sites profissionais, landing pages, design premium, engenharia front-end, SEO técnico, otimização de performance e lançamento digital."
+    },
+    {
+      "question": "Para quem é indicado?",
+      "answer": "Para empresas, fundadores e marcas que precisam de presença digital memorável, alta performance e sites preparados para converter tráfego em clientes."
+    },
+    {
+      "question": "Como iniciar um projeto?",
+      "answer": "Entre em contato pelo WhatsApp ou pelo e-mail shinodalabs@gmail.com. A resposta é personalizada em até 24 horas, com briefing, escopo e próximos passos claros."
+    }
+  ]
+}

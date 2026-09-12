@@ -201,8 +201,7 @@
   padding: 8px;
   display: none;
 }
-.sl-dropdown:hover .sl-dropdown-panel,
-.sl-dropdown:focus-within .sl-dropdown-panel {
+.sl-dropdown-panel:not([hidden]) {
   display: block;
 }
 .sl-dropdown-panel a {
@@ -1667,4 +1666,40 @@ html.lenis {
 }
 .sl-site .sl-lucide-animated svg {
   transform: none;
+}
+
+.sl-service-panel[hidden] {
+  display: none;
+}
+.sl-site [id] {
+  scroll-margin-top: 110px;
+}
+.sl-site :is(a, button, summary) {
+  overflow-wrap: anywhere;
+}
+.sl-faq {
+  border: 1px solid var(--sl-border);
+  background: var(--sl-card);
+}
+.sl-faq details + details {
+  border-top: 1px solid var(--sl-border);
+}
+.sl-faq summary {
+  cursor: pointer;
+  padding: 22px 26px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.sl-faq summary::marker {
+  color: var(--sl-blue);
+}
+.sl-faq details p {
+  padding: 0 26px 24px;
+  color: var(--sl-muted);
+  max-width: 850px;
+  line-height: 1.8;
+}
+.sl-faq summary:focus-visible {
+  outline: 2px solid var(--sl-blue);
+  outline-offset: -4px;
 }
