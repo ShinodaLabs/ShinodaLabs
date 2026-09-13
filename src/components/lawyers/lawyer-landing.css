@@ -913,6 +913,10 @@
   .law-intro {
     font-size: 13px;
   }
+  .law-hero-copy > .law-button {
+    width: 100%;
+    display: flex;
+  }
   .law-hero-points {
     gap: 14px;
     margin-top: 24px;
