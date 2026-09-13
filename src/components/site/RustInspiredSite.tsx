@@ -1,6 +1,4 @@
 import siteContent from "@/content/site.json";
-import { Link } from "@tanstack/react-router";
-import type { FileRouteTypes } from "@/routeTree.gen";
 import {
   Globe,
   Layers,
@@ -19,8 +17,8 @@ import avatar from "@/assets/avatar.webp";
 import "./rust-inspired.css";
 import { StackGlobe } from "./StackGlobe";
 import { SmoothScroll } from "./SmoothScroll";
-import { CustomCursor } from "./CustomCursor";
 import { MotionSection, AnimatedIcon, ServiceTransition, ScrollProgress } from "./SiteMotion";
+import { SiteTypesCarousel } from "./SiteTypesCarousel";
 
 const whatsapp = "https://wa.me/5551996236798";
 const serviceIcons = [Globe, MousePointer2, Layers, Code2, Search, Zap, Rocket, ShieldCheck];
@@ -88,7 +86,6 @@ export function RustInspiredSite() {
   return (
     <div className={`sl-site${dark ? " sl-dark" : ""}`} id="top">
       <SmoothScroll />
-      <CustomCursor />
       <a className="sl-skip" href="#conteudo-principal">
         Pular para o conteúdo
       </a>
@@ -484,35 +481,7 @@ export function RustInspiredSite() {
               title="Sites pensados para o seu mercado"
               text="Cada segmento pede uma presença diferente. Veja os tipos de site que construímos e escolha o que combina com o seu negócio."
             />
-            <div className="sl-project-grid">
-              {siteTypes.map((siteType) => (
-                <Link
-                  key={siteType.href}
-                  to={siteType.href as FileRouteTypes["to"]}
-                  preload="intent"
-                  className="sl-project"
-                >
-                  <div className="sl-project-image">
-                    <img
-                      src={siteType.image}
-                      alt={siteType.name}
-                      loading="lazy"
-                      width="800"
-                      height="500"
-                    />
-                  </div>
-                  <div className="sl-project-content">
-                    <div className="sl-project-label">
-                      <span>{siteType.category}</span>
-                      <ArrowUpRight size={18} />
-                    </div>
-                    <h3>{siteType.name}</h3>
-                    <p>{siteType.text}</p>
-                    <code>{siteType.code}</code>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <SiteTypesCarousel items={siteTypes} />
           </div>
         </MotionSection>
         <MotionSection className="sl-section" background="aurora">

@@ -1,0 +1,32 @@
+.therapist-page {
+  --law-accent: #b4a5e8;
+  --law-accent-hover: #cbbff2;
+  --law-accent-bright: #e4dcf8;
+  --law-accent-deep: #7d6bc4;
+  --law-accent-grid: #c0b4ee;
+  --law-on-accent: #1a1428;
+  --law-glow: #6a5a9e;
+  --law-preview-bg: #221e2a;
+  --law-preview-border: #4a4258;
+  --law-compare-from: #221c2c;
+  --law-compare-to: #18141c;
+  --law-service-from: #262030;
+  --law-service-mid: #18141c;
+  --law-service-hover-from: #302838;
+  --law-service-hover-mid: #1c1822;
+  --law-fit-bg: #221c2a;
+  --law-contact-glow: #3a2e52;
+  --law-contact-bg: #18141c;
+  --law-form-bg: #141018;
+  --law-input-bg: #221c28;
+  --law-input-focus: #2c2434;
+  --law-presence-from: #241e2c;
+  --law-process-from: #262030;
+  --law-process-to: #16141a;
+  --law-faq-help-from: #2a2434;
+  --law-step-from: #221c28;
+  --law-step-num-bg: #1a1620;
+  --law-bg: #121018;
+  --law-surface: #1c1824;
+  --law-muted: #b4aebc;
+}

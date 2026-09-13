@@ -1,9 +1,37 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-const interactiveSelector = "a, button, summary, [role='button'], [role='tab'], .sl-globe-canvas";
+const interactiveSelector =
+  "a, button, summary, [role='button'], [role='tab'], .sl-globe-canvas, .law-button, .law-header-contact, .law-presence-card, .law-service-card, .law-email, .law-browser, .law-preview-badge, .law-faq-help, .law-mobile-cta a";
+
+const landingAccents: Record<string, string> = {
+  "/landing-page-advogados": "#5ee3bd",
+  "/landing-page-academias": "#ff7a3c",
+  "/landing-page-dentistas": "#4fd4c4",
+  "/landing-page-clinicas-medicas": "#4aa8e0",
+  "/landing-page-psicologos": "#b4a5e8",
+  "/landing-page-veterinarias": "#f08a5a",
+  "/landing-page-saloes": "#d4926a",
+  "/landing-page-imobiliarias": "#c4b06a",
+  "/landing-page-arquitetos": "#4ec4e0",
+  "/landing-page-fotografos": "#e8b84a",
+  "/landing-page-contadores": "#3dba8a",
+  "/landing-page-tatuagem": "#e84545",
+};
+
+const homeDarkAccent = "#719fff";
+const homeLightAccent = "#2568f5";
+
+function accentForPath(pathname: string) {
+  const landing = landingAccents[pathname];
+  if (landing) return landing;
+  const isLightHome = document.querySelector(".sl-site:not(.sl-dark)");
+  return isLightHome ? homeLightAccent : homeDarkAccent;
+}
 
 export function CustomCursor() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
   const [enabled, setEnabled] = useState(false);
   const [visible, setVisible] = useState(false);
   const [active, setActive] = useState(false);
@@ -24,6 +52,21 @@ export function CustomCursor() {
 
     return () => canUseCustomCursor.removeEventListener("change", updateEnabled);
   }, []);
+
+  useEffect(() => {
+    const apply = () => {
+      document.documentElement.style.setProperty("--cursor-accent", accentForPath(pathname));
+    };
+    apply();
+
+    if (pathname !== "/") return;
+
+    const site = document.querySelector(".sl-site");
+    if (!site) return;
+    const observer = new MutationObserver(apply);
+    observer.observe(site, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, [pathname]);
 
   useEffect(() => {
     if (!enabled) {

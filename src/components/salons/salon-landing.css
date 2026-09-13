@@ -1,0 +1,32 @@
+.salon-page {
+  --law-accent: #d4926a;
+  --law-accent-hover: #e0aa88;
+  --law-accent-bright: #f0d0b8;
+  --law-accent-deep: #a86a42;
+  --law-accent-grid: #d4a07a;
+  --law-on-accent: #1a100c;
+  --law-glow: #8a5a3a;
+  --law-preview-bg: #24201c;
+  --law-preview-border: #5a4638;
+  --law-compare-from: #2a2018;
+  --law-compare-to: #1a1614;
+  --law-service-from: #2a221a;
+  --law-service-mid: #181412;
+  --law-service-hover-from: #33281e;
+  --law-service-hover-mid: #1e1814;
+  --law-fit-bg: #261c14;
+  --law-contact-glow: #4a3220;
+  --law-contact-bg: #1a1614;
+  --law-form-bg: #14110f;
+  --law-input-bg: #221c18;
+  --law-input-focus: #2a241c;
+  --law-presence-from: #261e18;
+  --law-process-from: #2a221a;
+  --law-process-to: #171412;
+  --law-faq-help-from: #2c241c;
+  --law-step-from: #241c18;
+  --law-step-num-bg: #1c1814;
+  --law-bg: #14110f;
+  --law-surface: #1e1a18;
+  --law-muted: #b8aea6;
+}

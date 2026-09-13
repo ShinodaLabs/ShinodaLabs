@@ -48,11 +48,61 @@ const jobs = [
     quality: 82,
   },
   {
-    input: "src/assets/project-gym.webp",
-    output: "public/images/landing-pages-academias.webp",
+    input: "src/assets/project-advogados.webp",
+    output: "src/assets/project-advogados.webp",
     width: 1280,
     quality: 82,
   },
+  {
+    input: "src/assets/project-academias.webp",
+    output: "src/assets/project-academias.webp",
+    width: 1280,
+    quality: 82,
+  },
+  {
+    input: "src/assets/project-advogados.webp",
+    output: "public/images/hero-landing-page-advogados.webp",
+    width: 1536,
+    quality: 82,
+  },
+  {
+    input: "src/assets/project-advogados.webp",
+    output: "public/images/landing-page-advogados.webp",
+    width: 1280,
+    quality: 82,
+  },
+  {
+    input: "src/assets/project-academias.webp",
+    output: "public/images/hero-landing-page-academias.webp",
+    width: 1536,
+    quality: 82,
+  },
+  {
+    input: "src/assets/project-academias.webp",
+    output: "public/images/landing-page-academias.webp",
+    width: 1280,
+    quality: 82,
+  },
+  ...["dentistas", "clinicas-medicas", "psicologos", "veterinarias", "saloes", "imobiliarias", "arquitetos", "fotografos", "contadores", "tatuagem"].flatMap((id) => [
+    {
+      input: `src/assets/project-${id}.webp`,
+      output: `src/assets/project-${id}.webp`,
+      width: 1280,
+      quality: 82,
+    },
+    {
+      input: `src/assets/project-${id}.webp`,
+      output: `public/images/hero-landing-page-${id}.webp`,
+      width: 1536,
+      quality: 82,
+    },
+    {
+      input: `src/assets/project-${id}.webp`,
+      output: `public/images/landing-page-${id}.webp`,
+      width: 1280,
+      quality: 82,
+    },
+  ]),
   {
     input: "public/logo.png",
     output: "public/logo.png",

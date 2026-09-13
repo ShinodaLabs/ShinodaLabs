@@ -63,7 +63,7 @@
       "category": "Advocacia",
       "text": "Landing pages e sites institucionais para advogados e escritórios que precisam transmitir credibilidade, apresentar áreas de atuação e facilitar o contato.",
       "href": "/landing-page-advogados",
-      "image": "/images/landing-pages-advogados.webp",
+      "image": "/images/landing-page-advogados.webp",
       "code": "Landing page · Site institucional"
     },
     {
@@ -71,7 +71,87 @@
       "category": "Fitness",
       "text": "Landing pages e sites institucionais para academias, estúdios e boxes que precisam apresentar estrutura, modalidades e facilitar o contato.",
       "href": "/landing-page-academias",
-      "image": "/images/landing-page-acamdemias.webp",
+      "image": "/images/landing-page-academias.webp",
+      "code": "Landing page · Site institucional"
+    },
+    {
+      "name": "Sites para dentistas",
+      "category": "Odontologia",
+      "text": "Landing pages e sites institucionais para dentistas e clínicas odontológicas que precisam transmitir cuidado, apresentar especialidades e facilitar o agendamento.",
+      "href": "/landing-page-dentistas",
+      "image": "/images/landing-page-dentistas.webp",
+      "code": "Landing page · Site institucional"
+    },
+    {
+      "name": "Sites para clínicas médicas",
+      "category": "Saúde",
+      "text": "Landing pages e sites institucionais para clínicas e consultórios que precisam apresentar especialidades, equipe e facilitar o contato.",
+      "href": "/landing-page-clinicas-medicas",
+      "image": "/images/landing-page-clinicas-medicas.webp",
+      "code": "Landing page · Site institucional"
+    },
+    {
+      "name": "Sites para psicólogos",
+      "category": "Saúde mental",
+      "text": "Landing pages e sites institucionais para psicólogos, terapeutas e clínicas que precisam apresentar a abordagem e facilitar o primeiro contato.",
+      "href": "/landing-page-psicologos",
+      "image": "/images/landing-page-psicologos.webp",
+      "code": "Landing page · Site institucional"
+    },
+    {
+      "name": "Sites para veterinárias",
+      "category": "Pet",
+      "text": "Landing pages e sites institucionais para clínicas veterinárias, hospitais e pet shops que precisam apresentar serviços e facilitar o contato.",
+      "href": "/landing-page-veterinarias",
+      "image": "/images/landing-page-veterinarias.webp",
+      "code": "Landing page · Site institucional"
+    },
+    {
+      "name": "Sites para salões e barbearias",
+      "category": "Beleza",
+      "text": "Landing pages e sites institucionais para salões, barbearias e studios que precisam apresentar serviços, equipe e facilitar o agendamento.",
+      "href": "/landing-page-saloes",
+      "image": "/images/landing-page-saloes.webp",
+      "code": "Landing page · Site institucional"
+    },
+    {
+      "name": "Sites para imobiliárias",
+      "category": "Imobiliário",
+      "text": "Landing pages e sites institucionais para imobiliárias e corretores que precisam apresentar a marca além dos portais e facilitar o contato.",
+      "href": "/landing-page-imobiliarias",
+      "image": "/images/landing-page-imobiliarias.webp",
+      "code": "Landing page · Site institucional"
+    },
+    {
+      "name": "Sites para arquitetos",
+      "category": "Arquitetura",
+      "text": "Landing pages e sites institucionais para escritórios de arquitetura, interiores e engenharia que precisam apresentar o portfólio e facilitar o briefing.",
+      "href": "/landing-page-arquitetos",
+      "image": "/images/landing-page-arquitetos.webp",
+      "code": "Landing page · Site institucional"
+    },
+    {
+      "name": "Sites para fotógrafos",
+      "category": "Fotografia",
+      "text": "Landing pages e sites institucionais para fotógrafos e estúdios que precisam de um portfólio rápido e um caminho claro para orçamento.",
+      "href": "/landing-page-fotografos",
+      "image": "/images/landing-page-fotografos.webp",
+      "code": "Landing page · Site institucional"
+    },
+    {
+      "name": "Sites para contadores",
+      "category": "Contabilidade",
+      "text": "Landing pages e sites institucionais para contadores e escritórios que precisam apresentar serviços com clareza e facilitar o contato comercial.",
+      "href": "/landing-page-contadores",
+      "image": "/images/landing-page-contadores.webp",
+      "code": "Landing page · Site institucional"
+    },
+    {
+      "name": "Sites para studios de tatuagem",
+      "category": "Tatuagem",
+      "text": "Landing pages e sites institucionais para tatuadores e studios que precisam apresentar artistas, estilos e facilitar o orçamento.",
+      "href": "/landing-page-tatuagem",
+      "image": "/images/landing-page-tatuagem.webp",
       "code": "Landing page · Site institucional"
     }
   ],

@@ -1,0 +1,32 @@
+.accountant-page {
+  --law-accent: #3dba8a;
+  --law-accent-hover: #62d0a4;
+  --law-accent-bright: #a8e8cc;
+  --law-accent-deep: #2a8a64;
+  --law-accent-grid: #4cc898;
+  --law-on-accent: #071a12;
+  --law-glow: #2a6e50;
+  --law-preview-bg: #1a2420;
+  --law-preview-border: #3a5548;
+  --law-compare-from: #16241e;
+  --law-compare-to: #141a16;
+  --law-service-from: #1a2a22;
+  --law-service-mid: #141a16;
+  --law-service-hover-from: #20342a;
+  --law-service-hover-mid: #181e1a;
+  --law-fit-bg: #15241c;
+  --law-contact-glow: #1a4030;
+  --law-contact-bg: #141a16;
+  --law-form-bg: #101614;
+  --law-input-bg: #1a2420;
+  --law-input-focus: #22302a;
+  --law-presence-from: #1a2620;
+  --law-process-from: #1a2a22;
+  --law-process-to: #141816;
+  --law-faq-help-from: #1c2c24;
+  --law-step-from: #1a2420;
+  --law-step-num-bg: #161c18;
+  --law-bg: #0e1210;
+  --law-surface: #161c1a;
+  --law-muted: #a8b4ae;
+}

@@ -2,28 +2,17 @@ import { useEffect } from "react";
 import TagManager from "@sooro-io/react-gtm-module";
 import ReactGA from "react-ga4";
 import { useRouterState } from "@tanstack/react-router";
-import {
-  GOOGLE_TAG_ID,
-  GYM_LANDING_GOOGLE_TAG_ID,
-  GYM_LANDING_TAG_MANAGER_ID,
-  LAWYER_LANDING_GOOGLE_TAG_ID,
-  LAWYER_LANDING_TAG_MANAGER_ID,
-} from "@/lib/google-tag-manager";
+import { GOOGLE_TAG_ID, LANDING_ANALYTICS } from "@/lib/google-tag-manager";
 
 const configuredGoogleTags = new Set<string>();
 let initializedTagManager = false;
 
 export function GoogleTracking() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const isLawyerLanding = pathname === "/landing-page-advogados";
-  const isGymLanding = pathname === "/landing-page-academias";
+  const landing = LANDING_ANALYTICS[pathname];
 
   useEffect(() => {
-    const tagIds = [
-      GOOGLE_TAG_ID,
-      isLawyerLanding ? LAWYER_LANDING_GOOGLE_TAG_ID : undefined,
-      isGymLanding ? GYM_LANDING_GOOGLE_TAG_ID : undefined,
-    ].filter((id): id is string => Boolean(id));
+    const tagIds = [GOOGLE_TAG_ID, landing?.ga].filter((id): id is string => Boolean(id));
     const newTagIds = tagIds.filter((id) => !configuredGoogleTags.has(id));
 
     if (newTagIds.length > 0) {
@@ -40,17 +29,11 @@ export function GoogleTracking() {
       ReactGA.send({ hitType: "pageview", page: pathname });
     }
 
-    const landingTagManagerId = isLawyerLanding
-      ? LAWYER_LANDING_TAG_MANAGER_ID
-      : isGymLanding
-        ? GYM_LANDING_TAG_MANAGER_ID
-        : undefined;
-
-    if (landingTagManagerId && !initializedTagManager) {
-      TagManager.initialize({ gtmId: landingTagManagerId });
+    if (landing?.gtm && !initializedTagManager) {
+      TagManager.initialize({ gtmId: landing.gtm });
       initializedTagManager = true;
     }
-  }, [isGymLanding, isLawyerLanding, pathname]);
+  }, [landing, pathname]);
 
   return null;
 }

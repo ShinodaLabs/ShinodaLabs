@@ -1,0 +1,32 @@
+.vet-page {
+  --law-accent: #f08a5a;
+  --law-accent-hover: #f5a87c;
+  --law-accent-bright: #f8cbb0;
+  --law-accent-deep: #c45a2e;
+  --law-accent-grid: #f09a6c;
+  --law-on-accent: #1a0e08;
+  --law-glow: #a85a32;
+  --law-preview-bg: #24201c;
+  --law-preview-border: #5a4336;
+  --law-compare-from: #2a1c16;
+  --law-compare-to: #1a1614;
+  --law-service-from: #2a1e18;
+  --law-service-mid: #181412;
+  --law-service-hover-from: #33241c;
+  --law-service-hover-mid: #1e1814;
+  --law-fit-bg: #261910;
+  --law-contact-glow: #4a2a18;
+  --law-contact-bg: #1a1614;
+  --law-form-bg: #14110f;
+  --law-input-bg: #211a16;
+  --law-input-focus: #2a201a;
+  --law-presence-from: #261c16;
+  --law-process-from: #2a1e18;
+  --law-process-to: #171412;
+  --law-faq-help-from: #2c2018;
+  --law-step-from: #241c18;
+  --law-step-num-bg: #1c1612;
+  --law-bg: #14110f;
+  --law-surface: #1e1916;
+  --law-muted: #b8aea6;
+}

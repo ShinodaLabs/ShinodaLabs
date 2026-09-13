@@ -14,6 +14,8 @@ export const Route = createFileRoute("/landing-page-advogados")({
       title,
       description,
       path: "/landing-page-advogados",
+      image: "https://shinodalabs.com/images/hero-landing-page-advogados.webp",
+      imageAlt: "Prévia conceitual de um site para escritório de advocacia: sala contemporânea com madeira e luz natural",
       keywords: "criação de sites para advogados, sites para escritórios de advocacia, ShinodaLabs",
     }).map((tag) =>
       "property" in tag && tag.property === "og:url" ? { ...tag, content: url } : tag,

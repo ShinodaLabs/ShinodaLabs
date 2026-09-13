@@ -1,0 +1,32 @@
+.dentist-page {
+  --law-accent: #4fd4c4;
+  --law-accent-hover: #7ee8dc;
+  --law-accent-bright: #b8f4ee;
+  --law-accent-deep: #2aa89a;
+  --law-accent-grid: #5edccf;
+  --law-on-accent: #07201d;
+  --law-glow: #2d8f86;
+  --law-preview-bg: #1a2424;
+  --law-preview-border: #3a5552;
+  --law-compare-from: #162422;
+  --law-compare-to: #141a1a;
+  --law-service-from: #1a2826;
+  --law-service-mid: #141a1a;
+  --law-service-hover-from: #203330;
+  --law-service-hover-mid: #181e1e;
+  --law-fit-bg: #152420;
+  --law-contact-glow: #1a403c;
+  --law-contact-bg: #141a1a;
+  --law-form-bg: #101616;
+  --law-input-bg: #1a2222;
+  --law-input-focus: #22302e;
+  --law-presence-from: #1a2624;
+  --law-process-from: #1a2826;
+  --law-process-to: #141816;
+  --law-faq-help-from: #1c2c2a;
+  --law-step-from: #1a2422;
+  --law-step-num-bg: #161c1c;
+  --law-bg: #0e1214;
+  --law-surface: #161c1e;
+  --law-muted: #a8b6b4;
+}

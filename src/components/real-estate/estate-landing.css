@@ -1,0 +1,32 @@
+.estate-page {
+  --law-accent: #c4b06a;
+  --law-accent-hover: #d4c488;
+  --law-accent-bright: #e8dcb0;
+  --law-accent-deep: #9a8848;
+  --law-accent-grid: #c9b87a;
+  --law-on-accent: #16140c;
+  --law-glow: #7a6c38;
+  --law-preview-bg: #22201a;
+  --law-preview-border: #524a32;
+  --law-compare-from: #262418;
+  --law-compare-to: #1a1814;
+  --law-service-from: #2a261c;
+  --law-service-mid: #181612;
+  --law-service-hover-from: #332e22;
+  --law-service-hover-mid: #1e1c16;
+  --law-fit-bg: #242014;
+  --law-contact-glow: #3a3420;
+  --law-contact-bg: #1a1814;
+  --law-form-bg: #14120e;
+  --law-input-bg: #222018;
+  --law-input-focus: #2a261c;
+  --law-presence-from: #242018;
+  --law-process-from: #2a261c;
+  --law-process-to: #161412;
+  --law-faq-help-from: #2c281c;
+  --law-step-from: #242018;
+  --law-step-num-bg: #1c1a14;
+  --law-bg: #12110e;
+  --law-surface: #1c1a16;
+  --law-muted: #b4b0a4;
+}

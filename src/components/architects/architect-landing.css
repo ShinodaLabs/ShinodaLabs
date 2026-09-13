@@ -1,0 +1,32 @@
+.architect-page {
+  --law-accent: #4ec4e0;
+  --law-accent-hover: #7ad4ea;
+  --law-accent-bright: #b8eaf4;
+  --law-accent-deep: #2a8aa8;
+  --law-accent-grid: #5ecce6;
+  --law-on-accent: #07141a;
+  --law-glow: #2a6e82;
+  --law-preview-bg: #1a2428;
+  --law-preview-border: #3a545c;
+  --law-compare-from: #162428;
+  --law-compare-to: #14181a;
+  --law-service-from: #1a2a30;
+  --law-service-mid: #14181a;
+  --law-service-hover-from: #203438;
+  --law-service-hover-mid: #181c1e;
+  --law-fit-bg: #152428;
+  --law-contact-glow: #1a3844;
+  --law-contact-bg: #14181a;
+  --law-form-bg: #101416;
+  --law-input-bg: #1a2428;
+  --law-input-focus: #223038;
+  --law-presence-from: #1a262a;
+  --law-process-from: #1a2a30;
+  --law-process-to: #14181a;
+  --law-faq-help-from: #1c2c32;
+  --law-step-from: #1a2428;
+  --law-step-num-bg: #161c1e;
+  --law-bg: #101214;
+  --law-surface: #181c1e;
+  --law-muted: #a8b2b6;
+}

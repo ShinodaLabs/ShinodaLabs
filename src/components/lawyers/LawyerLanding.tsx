@@ -145,19 +145,6 @@ export function LawyerLanding() {
       <a className="law-skip" href="#conteudo">
         Pular para o conteúdo
       </a>
-      <header className="law-header law-wrap">
-        <a href="/" className="law-brand" aria-label="ShinodaLabs — início">
-          <img src="/logo.png" alt="" width={171} height={38} decoding="async" />
-        </a>
-        <span className="law-header-note">ESTÚDIO DIGITAL / SOLUÇÕES PARA ADVOCACIA</span>
-        <a
-          href="#conversa"
-          className="law-header-contact"
-          onClick={() => track("cta_click", "header")}
-        >
-          Vamos conversar <ArrowUpRight size={16} aria-hidden="true" />
-        </a>
-      </header>
       <main id="conteudo">
         <section className="law-hero law-wrap law-decorated">
           <div className="law-backdrop law-backdrop-hero" aria-hidden="true">
@@ -190,18 +177,18 @@ export function LawyerLanding() {
           </div>
           <div className="law-showcase">
             <div className="law-showcase-label">
-              <span>DA ESTRATÉGIA À EXPERIÊNCIA.</span>
-              <span>01 / PREVIEW</span>
+              <span>O ESPAÇO QUE O SITE APRESENTA.</span>
+              <span>01 / REFERÊNCIA</span>
             </div>
             <div className="law-browser">
               <div className="law-browser-bar">
                 <span aria-hidden="true">● ● ●</span>
-                <span>Oliveira & Martins · Advocacia</span>
+                <span>Ambiente de escritório</span>
                 <ShieldCheck size={13} aria-hidden="true" />
               </div>
               <img
                 src="/images/hero-landing-page-advogados.webp"
-                alt="Prévia de um site para escritório de advocacia: identidade visual sóbria, áreas de atuação e contato em destaque"
+                alt="Prévia conceitual de um site para escritório de advocacia: sala contemporânea com madeira e luz natural"
                 width={1536}
                 height={1024}
                 fetchPriority="high"
@@ -212,8 +199,8 @@ export function LawyerLanding() {
                 <Smartphone size={22} />
               </span>
               <div>
-                <strong>Uma presença. Todas as telas.</strong>
-                <span>Experiência pensada para acompanhar seu público.</span>
+                <strong>Do espaço à presença digital.</strong>
+                <span>O site traduz ambiente, marca e contato.</span>
               </div>
             </div>
           </div>

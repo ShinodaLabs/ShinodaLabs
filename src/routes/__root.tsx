@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { GoogleTracking } from "@/components/analytics/GoogleTracking";
+import { CustomCursor } from "@/components/site/CustomCursor";
 import { DeferredAnalytics } from "@/components/site/DeferredAnalytics";
 import appCss from "../styles.css?url";
 
@@ -125,6 +126,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <CustomCursor />
     </QueryClientProvider>
   );
 }

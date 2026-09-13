@@ -1,0 +1,32 @@
+.tattoo-page {
+  --law-accent: #e84545;
+  --law-accent-hover: #f07070;
+  --law-accent-bright: #f4a0a0;
+  --law-accent-deep: #b82828;
+  --law-accent-grid: #ec5858;
+  --law-on-accent: #1a0808;
+  --law-glow: #8a2424;
+  --law-preview-bg: #241818;
+  --law-preview-border: #5a3232;
+  --law-compare-from: #2a1616;
+  --law-compare-to: #1a1414;
+  --law-service-from: #2c1818;
+  --law-service-mid: #181414;
+  --law-service-hover-from: #381c1c;
+  --law-service-hover-mid: #1e1616;
+  --law-fit-bg: #261414;
+  --law-contact-glow: #4a1c1c;
+  --law-contact-bg: #1a1414;
+  --law-form-bg: #141010;
+  --law-input-bg: #241818;
+  --law-input-focus: #2c1c1c;
+  --law-presence-from: #261818;
+  --law-process-from: #2c1818;
+  --law-process-to: #161212;
+  --law-faq-help-from: #2e1a1a;
+  --law-step-from: #241818;
+  --law-step-num-bg: #1c1414;
+  --law-bg: #120e0e;
+  --law-surface: #1c1616;
+  --law-muted: #b8aeae;
+}

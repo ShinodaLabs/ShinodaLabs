@@ -9,10 +9,71 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LandingPageVeterinariasRouteImport } from './routes/landing-page-veterinarias'
+import { Route as LandingPageTatuagemRouteImport } from './routes/landing-page-tatuagem'
+import { Route as LandingPageSaloesRouteImport } from './routes/landing-page-saloes'
+import { Route as LandingPagePsicologosRouteImport } from './routes/landing-page-psicologos'
+import { Route as LandingPageImobiliariasRouteImport } from './routes/landing-page-imobiliarias'
+import { Route as LandingPageFotografosRouteImport } from './routes/landing-page-fotografos'
+import { Route as LandingPageDentistasRouteImport } from './routes/landing-page-dentistas'
+import { Route as LandingPageContadoresRouteImport } from './routes/landing-page-contadores'
+import { Route as LandingPageClinicasMedicasRouteImport } from './routes/landing-page-clinicas-medicas'
+import { Route as LandingPageArquitetosRouteImport } from './routes/landing-page-arquitetos'
 import { Route as LandingPageAdvogadosRouteImport } from './routes/landing-page-advogados'
 import { Route as LandingPageAcademiasRouteImport } from './routes/landing-page-academias'
 import { Route as IndexRouteImport } from './routes/index'
 
+const LandingPageVeterinariasRoute = LandingPageVeterinariasRouteImport.update({
+  id: '/landing-page-veterinarias',
+  path: '/landing-page-veterinarias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingPageTatuagemRoute = LandingPageTatuagemRouteImport.update({
+  id: '/landing-page-tatuagem',
+  path: '/landing-page-tatuagem',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingPageSaloesRoute = LandingPageSaloesRouteImport.update({
+  id: '/landing-page-saloes',
+  path: '/landing-page-saloes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingPagePsicologosRoute = LandingPagePsicologosRouteImport.update({
+  id: '/landing-page-psicologos',
+  path: '/landing-page-psicologos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingPageImobiliariasRoute = LandingPageImobiliariasRouteImport.update({
+  id: '/landing-page-imobiliarias',
+  path: '/landing-page-imobiliarias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingPageFotografosRoute = LandingPageFotografosRouteImport.update({
+  id: '/landing-page-fotografos',
+  path: '/landing-page-fotografos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingPageDentistasRoute = LandingPageDentistasRouteImport.update({
+  id: '/landing-page-dentistas',
+  path: '/landing-page-dentistas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingPageContadoresRoute = LandingPageContadoresRouteImport.update({
+  id: '/landing-page-contadores',
+  path: '/landing-page-contadores',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingPageClinicasMedicasRoute =
+  LandingPageClinicasMedicasRouteImport.update({
+    id: '/landing-page-clinicas-medicas',
+    path: '/landing-page-clinicas-medicas',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LandingPageArquitetosRoute = LandingPageArquitetosRouteImport.update({
+  id: '/landing-page-arquitetos',
+  path: '/landing-page-arquitetos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LandingPageAdvogadosRoute = LandingPageAdvogadosRouteImport.update({
   id: '/landing-page-advogados',
   path: '/landing-page-advogados',
@@ -33,34 +94,184 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/landing-page-academias': typeof LandingPageAcademiasRoute
   '/landing-page-advogados': typeof LandingPageAdvogadosRoute
+  '/landing-page-arquitetos': typeof LandingPageArquitetosRoute
+  '/landing-page-clinicas-medicas': typeof LandingPageClinicasMedicasRoute
+  '/landing-page-contadores': typeof LandingPageContadoresRoute
+  '/landing-page-dentistas': typeof LandingPageDentistasRoute
+  '/landing-page-fotografos': typeof LandingPageFotografosRoute
+  '/landing-page-imobiliarias': typeof LandingPageImobiliariasRoute
+  '/landing-page-psicologos': typeof LandingPagePsicologosRoute
+  '/landing-page-saloes': typeof LandingPageSaloesRoute
+  '/landing-page-tatuagem': typeof LandingPageTatuagemRoute
+  '/landing-page-veterinarias': typeof LandingPageVeterinariasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/landing-page-academias': typeof LandingPageAcademiasRoute
   '/landing-page-advogados': typeof LandingPageAdvogadosRoute
+  '/landing-page-arquitetos': typeof LandingPageArquitetosRoute
+  '/landing-page-clinicas-medicas': typeof LandingPageClinicasMedicasRoute
+  '/landing-page-contadores': typeof LandingPageContadoresRoute
+  '/landing-page-dentistas': typeof LandingPageDentistasRoute
+  '/landing-page-fotografos': typeof LandingPageFotografosRoute
+  '/landing-page-imobiliarias': typeof LandingPageImobiliariasRoute
+  '/landing-page-psicologos': typeof LandingPagePsicologosRoute
+  '/landing-page-saloes': typeof LandingPageSaloesRoute
+  '/landing-page-tatuagem': typeof LandingPageTatuagemRoute
+  '/landing-page-veterinarias': typeof LandingPageVeterinariasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/landing-page-academias': typeof LandingPageAcademiasRoute
   '/landing-page-advogados': typeof LandingPageAdvogadosRoute
+  '/landing-page-arquitetos': typeof LandingPageArquitetosRoute
+  '/landing-page-clinicas-medicas': typeof LandingPageClinicasMedicasRoute
+  '/landing-page-contadores': typeof LandingPageContadoresRoute
+  '/landing-page-dentistas': typeof LandingPageDentistasRoute
+  '/landing-page-fotografos': typeof LandingPageFotografosRoute
+  '/landing-page-imobiliarias': typeof LandingPageImobiliariasRoute
+  '/landing-page-psicologos': typeof LandingPagePsicologosRoute
+  '/landing-page-saloes': typeof LandingPageSaloesRoute
+  '/landing-page-tatuagem': typeof LandingPageTatuagemRoute
+  '/landing-page-veterinarias': typeof LandingPageVeterinariasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/landing-page-academias' | '/landing-page-advogados'
+  fullPaths:
+    | '/'
+    | '/landing-page-academias'
+    | '/landing-page-advogados'
+    | '/landing-page-arquitetos'
+    | '/landing-page-clinicas-medicas'
+    | '/landing-page-contadores'
+    | '/landing-page-dentistas'
+    | '/landing-page-fotografos'
+    | '/landing-page-imobiliarias'
+    | '/landing-page-psicologos'
+    | '/landing-page-saloes'
+    | '/landing-page-tatuagem'
+    | '/landing-page-veterinarias'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/landing-page-academias' | '/landing-page-advogados'
-  id: '__root__' | '/' | '/landing-page-academias' | '/landing-page-advogados'
+  to:
+    | '/'
+    | '/landing-page-academias'
+    | '/landing-page-advogados'
+    | '/landing-page-arquitetos'
+    | '/landing-page-clinicas-medicas'
+    | '/landing-page-contadores'
+    | '/landing-page-dentistas'
+    | '/landing-page-fotografos'
+    | '/landing-page-imobiliarias'
+    | '/landing-page-psicologos'
+    | '/landing-page-saloes'
+    | '/landing-page-tatuagem'
+    | '/landing-page-veterinarias'
+  id:
+    | '__root__'
+    | '/'
+    | '/landing-page-academias'
+    | '/landing-page-advogados'
+    | '/landing-page-arquitetos'
+    | '/landing-page-clinicas-medicas'
+    | '/landing-page-contadores'
+    | '/landing-page-dentistas'
+    | '/landing-page-fotografos'
+    | '/landing-page-imobiliarias'
+    | '/landing-page-psicologos'
+    | '/landing-page-saloes'
+    | '/landing-page-tatuagem'
+    | '/landing-page-veterinarias'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LandingPageAcademiasRoute: typeof LandingPageAcademiasRoute
   LandingPageAdvogadosRoute: typeof LandingPageAdvogadosRoute
+  LandingPageArquitetosRoute: typeof LandingPageArquitetosRoute
+  LandingPageClinicasMedicasRoute: typeof LandingPageClinicasMedicasRoute
+  LandingPageContadoresRoute: typeof LandingPageContadoresRoute
+  LandingPageDentistasRoute: typeof LandingPageDentistasRoute
+  LandingPageFotografosRoute: typeof LandingPageFotografosRoute
+  LandingPageImobiliariasRoute: typeof LandingPageImobiliariasRoute
+  LandingPagePsicologosRoute: typeof LandingPagePsicologosRoute
+  LandingPageSaloesRoute: typeof LandingPageSaloesRoute
+  LandingPageTatuagemRoute: typeof LandingPageTatuagemRoute
+  LandingPageVeterinariasRoute: typeof LandingPageVeterinariasRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/landing-page-veterinarias': {
+      id: '/landing-page-veterinarias'
+      path: '/landing-page-veterinarias'
+      fullPath: '/landing-page-veterinarias'
+      preLoaderRoute: typeof LandingPageVeterinariasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landing-page-tatuagem': {
+      id: '/landing-page-tatuagem'
+      path: '/landing-page-tatuagem'
+      fullPath: '/landing-page-tatuagem'
+      preLoaderRoute: typeof LandingPageTatuagemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landing-page-saloes': {
+      id: '/landing-page-saloes'
+      path: '/landing-page-saloes'
+      fullPath: '/landing-page-saloes'
+      preLoaderRoute: typeof LandingPageSaloesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landing-page-psicologos': {
+      id: '/landing-page-psicologos'
+      path: '/landing-page-psicologos'
+      fullPath: '/landing-page-psicologos'
+      preLoaderRoute: typeof LandingPagePsicologosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landing-page-imobiliarias': {
+      id: '/landing-page-imobiliarias'
+      path: '/landing-page-imobiliarias'
+      fullPath: '/landing-page-imobiliarias'
+      preLoaderRoute: typeof LandingPageImobiliariasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landing-page-fotografos': {
+      id: '/landing-page-fotografos'
+      path: '/landing-page-fotografos'
+      fullPath: '/landing-page-fotografos'
+      preLoaderRoute: typeof LandingPageFotografosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landing-page-dentistas': {
+      id: '/landing-page-dentistas'
+      path: '/landing-page-dentistas'
+      fullPath: '/landing-page-dentistas'
+      preLoaderRoute: typeof LandingPageDentistasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landing-page-contadores': {
+      id: '/landing-page-contadores'
+      path: '/landing-page-contadores'
+      fullPath: '/landing-page-contadores'
+      preLoaderRoute: typeof LandingPageContadoresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landing-page-clinicas-medicas': {
+      id: '/landing-page-clinicas-medicas'
+      path: '/landing-page-clinicas-medicas'
+      fullPath: '/landing-page-clinicas-medicas'
+      preLoaderRoute: typeof LandingPageClinicasMedicasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landing-page-arquitetos': {
+      id: '/landing-page-arquitetos'
+      path: '/landing-page-arquitetos'
+      fullPath: '/landing-page-arquitetos'
+      preLoaderRoute: typeof LandingPageArquitetosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/landing-page-advogados': {
       id: '/landing-page-advogados'
       path: '/landing-page-advogados'
@@ -89,6 +300,16 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LandingPageAcademiasRoute: LandingPageAcademiasRoute,
   LandingPageAdvogadosRoute: LandingPageAdvogadosRoute,
+  LandingPageArquitetosRoute: LandingPageArquitetosRoute,
+  LandingPageClinicasMedicasRoute: LandingPageClinicasMedicasRoute,
+  LandingPageContadoresRoute: LandingPageContadoresRoute,
+  LandingPageDentistasRoute: LandingPageDentistasRoute,
+  LandingPageFotografosRoute: LandingPageFotografosRoute,
+  LandingPageImobiliariasRoute: LandingPageImobiliariasRoute,
+  LandingPagePsicologosRoute: LandingPagePsicologosRoute,
+  LandingPageSaloesRoute: LandingPageSaloesRoute,
+  LandingPageTatuagemRoute: LandingPageTatuagemRoute,
+  LandingPageVeterinariasRoute: LandingPageVeterinariasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -63,25 +63,30 @@
 .sl-cursor-dot {
   width: 6px;
   height: 6px;
-  background: var(--sl-blue);
+  background: var(--cursor-accent, var(--sl-blue));
   box-shadow: 0 0 0 1px var(--sl-bg);
 }
 .sl-cursor-ring {
   width: 30px;
   height: 30px;
-  border: 1px solid var(--sl-blue);
-  background: color-mix(in srgb, var(--sl-blue) 8%, transparent);
+  border: 1px solid var(--cursor-accent, var(--sl-blue));
+  background: color-mix(in srgb, var(--cursor-accent, var(--sl-blue)) 8%, transparent);
 }
 html.custom-cursor-enabled .sl-site,
-html.custom-cursor-enabled .sl-site * {
+html.custom-cursor-enabled .sl-site *,
+html.custom-cursor-enabled .law-page,
+html.custom-cursor-enabled .law-page * {
   cursor: none !important;
 }
 .sl-site a,
 .sl-site button {
   transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
+    background 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    translate 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .sl-site :is(a, button, [tabindex]):focus-visible {
   outline: 2px solid var(--sl-blue);
@@ -727,10 +732,89 @@ html.custom-cursor-enabled .sl-site * {
 .sl-process-row code {
   color: var(--sl-blue);
 }
-.sl-project-grid {
+.sl-site-types-viewport {
+  overflow: hidden;
+}
+.sl-site-types-track {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: -20px;
+}
+.sl-site-types-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-left: 20px;
+}
+@media (min-width: 801px) {
+  .sl-site-types-slide {
+    flex: 0 0 33.333%;
+  }
+}
+.sl-site-types-slide .sl-project {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.sl-site-types-slide .sl-project-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.sl-site-types-slide .sl-project-content code {
+  margin-top: auto;
+}
+.sl-site-types-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+}
+.sl-site-types-dots {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.sl-site-types-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 99px;
+  background: var(--sl-border);
+  transition:
+    width 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sl-site-types-dot.is-active {
+  width: 22px;
+  background: var(--sl-blue);
+}
+.sl-site-types-arrows {
+  display: flex;
+  gap: 8px;
+}
+.sl-site-types-arrow {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
-  gap: 20px;
+  place-items: center;
+  border: 1px solid var(--sl-border);
+  background: var(--sl-card);
+  color: var(--sl-fg);
+  transition:
+    border-color 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sl-site-types-arrow:hover:not(:disabled) {
+  border-color: var(--sl-blue);
+  color: var(--sl-blue);
+}
+.sl-site-types-arrow:disabled {
+  opacity: 0.35;
 }
 .sl-project {
   display: block;
@@ -751,10 +835,11 @@ html.custom-cursor-enabled .sl-site * {
   height: 100%;
   object-fit: cover;
   object-position: top;
-  transition: transform 0.5s;
+  scale: 1;
+  transition: scale 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .sl-project:hover img {
-  transform: scale(1.025);
+  scale: 1.08;
 }
 .sl-project:hover {
   border-color: var(--sl-blue);
@@ -1102,9 +1187,6 @@ html.custom-cursor-enabled .sl-site * {
   .sl-service-visual {
     min-height: 220px;
   }
-  .sl-project-grid {
-    grid-template-columns: 1fr;
-  }
   .sl-launch {
     grid-template-columns: 1fr;
   }
@@ -1274,9 +1356,6 @@ html.custom-cursor-enabled .sl-site * {
     width: 14px;
     margin-top: 3px;
   }
-  .sl-project-grid {
-    grid-template-columns: 1fr;
-  }
   .sl-launch {
     padding: 24px;
   }
@@ -1310,8 +1389,9 @@ html.custom-cursor-enabled .sl-site * {
   html {
     scroll-behavior: auto;
   }
-  .sl-site * {
-    transition: none !important;
+  .sl-site .sl-background-orbits,
+  .sl-site .sl-background-glow,
+  .sl-site .sl-background-beam {
     animation: none !important;
   }
 }
@@ -1598,9 +1678,9 @@ html.custom-cursor-enabled .sl-site * {
 .sl-contact-card,
 .sl-tech-grid > div {
   transition:
-    border-color 0.25s,
-    background-color 0.25s,
-    box-shadow 0.25s;
+    border-color 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .sl-project:hover {
   box-shadow: 0 14px 35px #2568f512;
@@ -1610,7 +1690,7 @@ html.custom-cursor-enabled .sl-site * {
   color: var(--sl-blue);
 }
 .sl-benefit {
-  transition: background-color 0.3s;
+  transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .sl-benefit:hover {
   background: var(--sl-secondary);
@@ -1622,27 +1702,27 @@ html.custom-cursor-enabled .sl-site * {
   translate: 0 0;
   scale: 1;
   transition:
-    translate 280ms cubic-bezier(0.22, 1, 0.36, 1),
-    scale 280ms cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 220ms ease,
-    color 220ms ease,
-    border-color 220ms ease;
+    translate 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    scale 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+@media (hover: hover) {
   .sl-site :is(.sl-button, button):not(:disabled):hover {
-    translate: 0 -3px;
-    scale: 1.025;
+    translate: 0 -5px;
+    scale: 1.03;
   }
   .sl-site :is(.sl-button, button):not(:disabled):active {
-    translate: 0 0;
-    scale: 0.98;
+    translate: 0 -1px;
+    scale: 0.99;
   }
 }
 .sl-button svg,
 .sl-text-link svg,
 .sl-project-label svg,
 .sl-contact-card > svg {
-  transition: transform 0.25s ease;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .sl-button:hover svg,
 .sl-text-link:hover svg {

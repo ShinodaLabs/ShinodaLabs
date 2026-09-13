@@ -42,13 +42,13 @@ export function Work() {
                     loading="lazy"
                     decoding="async"
                     fetchPriority="low"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.15s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/0 to-transparent opacity-60" />
                   <div className="absolute top-4 left-4 border-l-2 border-teal bg-background/90 px-3 py-1 text-xs font-medium uppercase tracking-wider text-primary">
                     {siteType.category}
                   </div>
-                  <span className="absolute top-4 right-4 flex h-11 w-11 items-center justify-center border border-border bg-background/90 text-foreground opacity-90 transition-colors group-hover:border-teal group-hover:text-teal sm:opacity-0 sm:group-hover:opacity-100">
+                  <span className="absolute top-4 right-4 flex h-11 w-11 items-center justify-center border border-border bg-background/90 text-foreground opacity-90 transition-[color,border-color,opacity] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-teal group-hover:text-teal sm:opacity-0 sm:group-hover:opacity-100">
                     <ArrowUpRight className="h-4 w-4" aria-hidden />
                   </span>
                 </div>

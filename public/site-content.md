@@ -85,10 +85,20 @@ Seu site acompanha as próximas etapas da empresa. Melhorias, novas páginas e a
 
 ## Tipos de sites
 
-A ShinodaLabs cria sites institucionais e landing pages sob medida para diferentes mercados. Há páginas dedicadas com o posicionamento, o formato e o caminho de contato de cada segmento.
+A ShinodaLabs cria sites e landing pages sob medida para diferentes mercados. Cada nicho tem uma página dedicada com o posicionamento, o formato e o caminho de contato adequados.
 
 - Sites para advogados: Landing pages e sites institucionais para advogados e escritórios que precisam transmitir credibilidade, apresentar áreas de atuação e facilitar o contato. https://shinodalabs.com/landing-page-advogados
 - Sites para academias: Landing pages e sites institucionais para academias, estúdios e boxes que precisam apresentar estrutura, modalidades e facilitar o contato. https://shinodalabs.com/landing-page-academias
+- Sites para dentistas: Landing pages e sites institucionais para dentistas e clínicas odontológicas que precisam transmitir cuidado, apresentar especialidades e facilitar o agendamento. https://shinodalabs.com/landing-page-dentistas
+- Sites para clínicas médicas: Landing pages e sites institucionais para clínicas e consultórios que precisam apresentar especialidades, equipe e facilitar o contato. https://shinodalabs.com/landing-page-clinicas-medicas
+- Sites para psicólogos: Landing pages e sites institucionais para psicólogos, terapeutas e clínicas que precisam apresentar a abordagem e facilitar o primeiro contato. https://shinodalabs.com/landing-page-psicologos
+- Sites para veterinárias: Landing pages e sites institucionais para clínicas veterinárias, hospitais e pet shops que precisam apresentar serviços e facilitar o contato. https://shinodalabs.com/landing-page-veterinarias
+- Sites para salões e barbearias: Landing pages e sites institucionais para salões, barbearias e studios que precisam apresentar serviços, equipe e facilitar o agendamento. https://shinodalabs.com/landing-page-saloes
+- Sites para imobiliárias: Landing pages e sites institucionais para imobiliárias e corretores que precisam apresentar a marca além dos portais e facilitar o contato. https://shinodalabs.com/landing-page-imobiliarias
+- Sites para arquitetos: Landing pages e sites institucionais para escritórios de arquitetura, interiores e engenharia que precisam apresentar o portfólio e facilitar o briefing. https://shinodalabs.com/landing-page-arquitetos
+- Sites para fotógrafos: Landing pages e sites institucionais para fotógrafos e estúdios que precisam de um portfólio rápido e um caminho claro para orçamento. https://shinodalabs.com/landing-page-fotografos
+- Sites para contadores: Landing pages e sites institucionais para contadores e escritórios que precisam apresentar serviços com clareza e facilitar o contato comercial. https://shinodalabs.com/landing-page-contadores
+- Sites para studios de tatuagem: Landing pages e sites institucionais para tatuadores e studios que precisam apresentar artistas, estilos e facilitar o orçamento. https://shinodalabs.com/landing-page-tatuagem
 
 Os tipos de sites estão em https://shinodalabs.com/#work.
 

@@ -1,0 +1,32 @@
+.photo-page {
+  --law-accent: #e8b84a;
+  --law-accent-hover: #f0c86a;
+  --law-accent-bright: #f8dc9a;
+  --law-accent-deep: #b88a28;
+  --law-accent-grid: #ecbe58;
+  --law-on-accent: #1a1408;
+  --law-glow: #8a6a20;
+  --law-preview-bg: #242018;
+  --law-preview-border: #5a4a28;
+  --law-compare-from: #2a2418;
+  --law-compare-to: #1a1812;
+  --law-service-from: #2c2618;
+  --law-service-mid: #181612;
+  --law-service-hover-from: #362e1c;
+  --law-service-hover-mid: #1e1a14;
+  --law-fit-bg: #262014;
+  --law-contact-glow: #4a3a18;
+  --law-contact-bg: #1a1814;
+  --law-form-bg: #14120e;
+  --law-input-bg: #242018;
+  --law-input-focus: #2c261c;
+  --law-presence-from: #262218;
+  --law-process-from: #2c2618;
+  --law-process-to: #161412;
+  --law-faq-help-from: #2e2818;
+  --law-step-from: #242018;
+  --law-step-num-bg: #1c1a14;
+  --law-bg: #10100e;
+  --law-surface: #1a1916;
+  --law-muted: #b4aea4;
+}

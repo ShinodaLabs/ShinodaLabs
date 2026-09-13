@@ -1,0 +1,32 @@
+.clinic-page {
+  --law-accent: #4aa8e0;
+  --law-accent-hover: #7cc4f0;
+  --law-accent-bright: #b8dff8;
+  --law-accent-deep: #2b7eb8;
+  --law-accent-grid: #5eb4e8;
+  --law-on-accent: #07151f;
+  --law-glow: #2a6a96;
+  --law-preview-bg: #1a2228;
+  --law-preview-border: #3a4e5a;
+  --law-compare-from: #162028;
+  --law-compare-to: #14181c;
+  --law-service-from: #1a2630;
+  --law-service-mid: #14181c;
+  --law-service-hover-from: #203040;
+  --law-service-hover-mid: #181c20;
+  --law-fit-bg: #152028;
+  --law-contact-glow: #1a3048;
+  --law-contact-bg: #14181c;
+  --law-form-bg: #101418;
+  --law-input-bg: #1a2228;
+  --law-input-focus: #223038;
+  --law-presence-from: #1a242c;
+  --law-process-from: #1a2630;
+  --law-process-to: #14181c;
+  --law-faq-help-from: #1c2834;
+  --law-step-from: #1a242a;
+  --law-step-num-bg: #161c20;
+  --law-bg: #0e1216;
+  --law-surface: #161b22;
+  --law-muted: #a8b2bc;
+}

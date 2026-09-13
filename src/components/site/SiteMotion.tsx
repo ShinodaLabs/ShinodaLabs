@@ -62,8 +62,8 @@ export function MotionSection({
           hoverAnimation?.stop();
           hoverAnimation = animate(
             element,
-            { y: -5 },
-            { type: "spring", stiffness: 320, damping: 24 },
+            { y: -8 },
+            { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
           );
         };
         const leave = () => {
@@ -71,7 +71,7 @@ export function MotionSection({
           hoverAnimation = animate(
             element,
             { y: 0 },
-            { type: "spring", stiffness: 320, damping: 24 },
+            { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
           );
         };
         element.addEventListener("pointerenter", enter);

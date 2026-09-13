@@ -14,6 +14,8 @@ export const Route = createFileRoute("/landing-page-academias")({
       title,
       description,
       path: "/landing-page-academias",
+      image: "https://shinodalabs.com/images/hero-landing-page-academias.webp",
+      imageAlt: "Prévia conceitual de um site para academia: interior contemporâneo de estúdio de treino",
       keywords:
         "criação de sites para academias, sites para estúdios de pilates, sites para boxes, ShinodaLabs",
     }).map((tag) =>
