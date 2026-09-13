@@ -1,5 +1,9 @@
 ﻿import { createFileRoute } from "@tanstack/react-router";
 import { LawyerLanding } from "@/components/lawyers/LawyerLanding";
+import {
+  lawyerLandingGoogleTagScript,
+  lawyerLandingGoogleTagScriptUrl,
+} from "@/lib/google-tag-manager";
 import { buildMetaTags } from "@/lib/seo";
 
 const url = "https://shinodalabs.com/landing-page-advogados";
@@ -37,6 +41,17 @@ export const Route = createFileRoute("/landing-page-advogados")({
           areaServed: { "@type": "Country", name: "Brasil" },
         }),
       },
+      ...(lawyerLandingGoogleTagScript && lawyerLandingGoogleTagScriptUrl
+        ? [
+            {
+              async: true,
+              src: lawyerLandingGoogleTagScriptUrl,
+            },
+            {
+              children: lawyerLandingGoogleTagScript,
+            },
+          ]
+        : []),
     ],
   }),
 });
