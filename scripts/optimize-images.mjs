@@ -42,6 +42,18 @@ const jobs = [
     quality: 82,
   },
   {
+    input: "src/assets/project-gym.webp",
+    output: "src/assets/project-gym.webp",
+    width: 1280,
+    quality: 82,
+  },
+  {
+    input: "src/assets/project-gym.webp",
+    output: "public/images/landing-pages-academias.webp",
+    width: 1280,
+    quality: 82,
+  },
+  {
     input: "public/logo.png",
     output: "public/logo.png",
     width: 760,

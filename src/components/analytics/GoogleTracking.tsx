@@ -4,6 +4,8 @@ import ReactGA from "react-ga4";
 import { useRouterState } from "@tanstack/react-router";
 import {
   GOOGLE_TAG_ID,
+  GYM_LANDING_GOOGLE_TAG_ID,
+  GYM_LANDING_TAG_MANAGER_ID,
   LAWYER_LANDING_GOOGLE_TAG_ID,
   LAWYER_LANDING_TAG_MANAGER_ID,
 } from "@/lib/google-tag-manager";
@@ -14,11 +16,13 @@ let initializedTagManager = false;
 export function GoogleTracking() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const isLawyerLanding = pathname === "/landing-page-advogados";
+  const isGymLanding = pathname === "/landing-page-academias";
 
   useEffect(() => {
     const tagIds = [
       GOOGLE_TAG_ID,
       isLawyerLanding ? LAWYER_LANDING_GOOGLE_TAG_ID : undefined,
+      isGymLanding ? GYM_LANDING_GOOGLE_TAG_ID : undefined,
     ].filter((id): id is string => Boolean(id));
     const newTagIds = tagIds.filter((id) => !configuredGoogleTags.has(id));
 
@@ -36,11 +40,17 @@ export function GoogleTracking() {
       ReactGA.send({ hitType: "pageview", page: pathname });
     }
 
-    if (isLawyerLanding && LAWYER_LANDING_TAG_MANAGER_ID && !initializedTagManager) {
-      TagManager.initialize({ gtmId: LAWYER_LANDING_TAG_MANAGER_ID });
+    const landingTagManagerId = isLawyerLanding
+      ? LAWYER_LANDING_TAG_MANAGER_ID
+      : isGymLanding
+        ? GYM_LANDING_TAG_MANAGER_ID
+        : undefined;
+
+    if (landingTagManagerId && !initializedTagManager) {
+      TagManager.initialize({ gtmId: landingTagManagerId });
       initializedTagManager = true;
     }
-  }, [isLawyerLanding, pathname]);
+  }, [isGymLanding, isLawyerLanding, pathname]);
 
   return null;
 }

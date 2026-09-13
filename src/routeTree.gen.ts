@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LandingPageAdvogadosRouteImport } from './routes/landing-page-advogados'
+import { Route as LandingPageAcademiasRouteImport } from './routes/landing-page-academias'
 import { Route as IndexRouteImport } from './routes/index'
 
 const LandingPageAdvogadosRoute = LandingPageAdvogadosRouteImport.update({
   id: '/landing-page-advogados',
   path: '/landing-page-advogados',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingPageAcademiasRoute = LandingPageAcademiasRouteImport.update({
+  id: '/landing-page-academias',
+  path: '/landing-page-academias',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/landing-page-academias': typeof LandingPageAcademiasRoute
   '/landing-page-advogados': typeof LandingPageAdvogadosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/landing-page-academias': typeof LandingPageAcademiasRoute
   '/landing-page-advogados': typeof LandingPageAdvogadosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/landing-page-academias': typeof LandingPageAcademiasRoute
   '/landing-page-advogados': typeof LandingPageAdvogadosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/landing-page-advogados'
+  fullPaths: '/' | '/landing-page-academias' | '/landing-page-advogados'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/landing-page-advogados'
-  id: '__root__' | '/' | '/landing-page-advogados'
+  to: '/' | '/landing-page-academias' | '/landing-page-advogados'
+  id: '__root__' | '/' | '/landing-page-academias' | '/landing-page-advogados'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LandingPageAcademiasRoute: typeof LandingPageAcademiasRoute
   LandingPageAdvogadosRoute: typeof LandingPageAdvogadosRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/landing-page-advogados'
       fullPath: '/landing-page-advogados'
       preLoaderRoute: typeof LandingPageAdvogadosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landing-page-academias': {
+      id: '/landing-page-academias'
+      path: '/landing-page-academias'
+      fullPath: '/landing-page-academias'
+      preLoaderRoute: typeof LandingPageAcademiasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LandingPageAcademiasRoute: LandingPageAcademiasRoute,
   LandingPageAdvogadosRoute: LandingPageAdvogadosRoute,
 }
 export const routeTree = rootRouteImport

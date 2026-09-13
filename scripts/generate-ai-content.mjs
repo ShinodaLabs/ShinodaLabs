@@ -1,4 +1,4 @@
-﻿import { readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 const root = new URL("../", import.meta.url);
 const content = JSON.parse(await readFile(new URL("src/content/site.json", root), "utf8"));
 const summary = `# ShinodaLabs
@@ -13,7 +13,7 @@ Site oficial em português do Brasil: https://shinodalabs.com/
 - [Sobre o estúdio](https://shinodalabs.com/#about): design e desenvolvimento com atenção aos detalhes.
 - [Soluções digitais](https://shinodalabs.com/#services): serviços oferecidos.
 - [Processo](https://shinodalabs.com/#process): discovery, estratégia, design, engenharia e lançamento.
-- [Tipos de sites](https://shinodalabs.com/#work): sites e landing pages por mercado, começando por [sites para advogados](https://shinodalabs.com/landing-page-advogados).
+- [Tipos de sites](https://shinodalabs.com/#work): sites e landing pages por mercado, incluindo [sites para advogados](https://shinodalabs.com/landing-page-advogados) e [sites para academias](https://shinodalabs.com/landing-page-academias).
 - [Perguntas frequentes](https://shinodalabs.com/#faq): respostas sobre o estúdio e como começar.
 - [Contato](https://shinodalabs.com/#contact): WhatsApp e e-mail.
 `;

@@ -65,6 +65,14 @@
       "href": "/landing-page-advogados",
       "image": "/images/landing-pages-advogados.webp",
       "code": "Landing page · Site institucional"
+    },
+    {
+      "name": "Sites para academias",
+      "category": "Fitness",
+      "text": "Landing pages e sites institucionais para academias, estúdios e boxes que precisam apresentar estrutura, modalidades e facilitar o contato.",
+      "href": "/landing-page-academias",
+      "image": "/images/landing-page-acamdemias.webp",
+      "code": "Landing page · Site institucional"
     }
   ],
   "faq": [

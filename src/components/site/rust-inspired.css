@@ -1009,12 +1009,23 @@ html.custom-cursor-enabled .sl-site * {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+  .sl-hero-grid > div:first-child {
+    text-align: center;
+  }
   .sl-hero h1 {
     font-size: 54px;
     max-width: 650px;
+    margin-inline: auto;
   }
   .sl-hero-description {
     max-width: 620px;
+    margin-inline: auto;
+  }
+  .sl-hero .sl-buttons {
+    justify-content: center;
+  }
+  .sl-hero .sl-pillars {
+    text-align: left;
   }
   .sl-pillars {
     grid-template-columns: repeat(4, 1fr);
@@ -1024,7 +1035,7 @@ html.custom-cursor-enabled .sl-site * {
     max-width: 440px;
     justify-self: center;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 48px;
   }
   .sl-stats {
     grid-template-columns: repeat(2, 1fr);
@@ -1039,8 +1050,15 @@ html.custom-cursor-enabled .sl-site * {
   .sl-section {
     padding: 72px 0;
   }
+  .sl-section-title {
+    text-align: center;
+    margin-inline: auto;
+  }
   .sl-section-title h2 {
     font-size: 38px;
+  }
+  .sl-section-title > p:last-child {
+    margin-inline: auto;
   }
   .sl-tech-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -1140,6 +1158,7 @@ html.custom-cursor-enabled .sl-site * {
   }
   .sl-globe {
     max-width: 340px;
+    margin-top: 56px;
   }
   .sl-stats > div {
     padding: 20px 12px;

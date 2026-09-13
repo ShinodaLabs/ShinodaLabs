@@ -97,7 +97,6 @@ export function StackGlobe({ dark = false }: { dark?: boolean }) {
     if (!element) return;
     let globe: Globe | undefined;
     let disposed = false;
-    let frame = 0;
     let visible = true;
     let lastTime = 0;
     let size = element.clientWidth;
@@ -119,35 +118,21 @@ export function StackGlobe({ dark = false }: { dark?: boolean }) {
         label.tabIndex = point.visible ? 0 : -1;
       });
     };
+    const spin = (now: number) => {
+      const elapsed = lastTime ? Math.min((now - lastTime) / 1000, 0.25) : 0;
+      lastTime = now;
+      if (!state.dragging && !state.reduced && visible && !document.hidden) {
+        state.phi += elapsed * 0.38;
+      }
+      state.theta += (state.targetTheta - state.theta) * 0.045;
+    };
     const draw = () => {
       globe?.update({ phi: state.phi, theta: state.theta });
       positionLabels();
     };
     redraw.current = draw;
-    const animate = (now: number) => {
-      frame = 0;
-      if (disposed || !visible || document.hidden) return;
-      const elapsed = lastTime ? Math.min((now - lastTime) / 1000, 0.25) : 0;
-      lastTime = now;
-      if (
-        !state.dragging &&
-        !state.reduced &&
-        !element.parentElement?.contains(document.activeElement)
-      )
-        state.phi += elapsed * 0.22;
-      state.theta += (state.targetTheta - state.theta) * 0.045;
-      draw();
-      frame = requestAnimationFrame(animate);
-    };
-    const start = () => {
-      if (!frame && !disposed && visible && !document.hidden) {
-        lastTime = 0;
-        frame = requestAnimationFrame(animate);
-      }
-    };
-    const stop = () => {
-      cancelAnimationFrame(frame);
-      frame = 0;
+    const pauseClock = () => {
+      lastTime = 0;
     };
     const observer = new ResizeObserver(() => {
       size = element.clientWidth;
@@ -157,17 +142,14 @@ export function StackGlobe({ dark = false }: { dark?: boolean }) {
     observer.observe(element);
     const intersection = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
-      if (visible) start();
-      else stop();
+      if (!visible) pauseClock();
     });
     intersection.observe(element);
     const visibility = () => {
-      if (document.hidden) stop();
-      else start();
+      if (document.hidden) pauseClock();
     };
     const preference = () => {
       state.reduced = media.matches;
-      start();
     };
     const followPointer = (event: PointerEvent) => {
       if (state.reduced || state.dragging || !visible || event.pointerType !== "mouse") return;
@@ -193,6 +175,13 @@ export function StackGlobe({ dark = false }: { dark?: boolean }) {
           devicePixelRatio: Math.min(window.devicePixelRatio || 1, 1.5),
           phi: state.phi,
           theta: state.theta,
+          onRender: (renderState) => {
+            if (disposed) return;
+            spin(performance.now());
+            renderState.phi = state.phi;
+            renderState.theta = state.theta;
+            positionLabels();
+          },
           dark: 1,
           diffuse: 1.6,
           mapSamples: size < 400 ? 10000 : 18000,
@@ -220,22 +209,20 @@ export function StackGlobe({ dark = false }: { dark?: boolean }) {
         globe.update(globePalette(theme.current));
         setStatus("ready");
         draw();
-        start();
-        // The map texture loads asynchronously; also refresh it when motion is disabled.
         canvas.addEventListener("webglcontextlost", onContextLost);
       })
       .catch(() => {
         if (!disposed) setStatus("fallback");
       });
     const onContextLost = () => {
-      stop();
+      pauseClock();
       setStatus("fallback");
     };
     const textureRefresh = window.setTimeout(draw, 700);
     positionLabels();
     return () => {
       disposed = true;
-      stop();
+      pauseClock();
       window.clearTimeout(textureRefresh);
       observer.disconnect();
       intersection.disconnect();

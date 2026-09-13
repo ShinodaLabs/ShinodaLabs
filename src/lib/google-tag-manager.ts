@@ -11,3 +11,11 @@ export const LAWYER_LANDING_TAG_MANAGER_ID =
   lawyerLandingTagManagerId && /^GTM-[A-Z0-9]+$/i.test(lawyerLandingTagManagerId)
     ? lawyerLandingTagManagerId
     : undefined;
+
+export const GYM_LANDING_GOOGLE_TAG_ID = getGoogleTagId(import.meta.env.VITE_LP_ACADEMIAS_GA_ID);
+const gymLandingTagManagerId = import.meta.env.VITE_LP_ACADEMIAS_GTM_ID?.trim();
+
+export const GYM_LANDING_TAG_MANAGER_ID =
+  gymLandingTagManagerId && /^GTM-[A-Z0-9]+$/i.test(gymLandingTagManagerId)
+    ? gymLandingTagManagerId
+    : undefined;

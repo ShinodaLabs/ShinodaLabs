@@ -1,0 +1,36 @@
+.gym-page {
+  --law-accent: #ff7a3c;
+  --law-accent-hover: #ff9b68;
+  --law-accent-bright: #ffc4a0;
+  --law-accent-deep: #d4521c;
+  --law-accent-grid: #ff8a4d;
+  --law-on-accent: #1a0e08;
+  --law-glow: #c45a28;
+  --law-preview-bg: #24201d;
+  --law-preview-border: #5a4336;
+  --law-compare-from: #2a1c16;
+  --law-compare-to: #1a1614;
+  --law-service-from: #2a1e18;
+  --law-service-mid: #181412;
+  --law-service-hover-from: #33241c;
+  --law-service-hover-mid: #1e1814;
+  --law-fit-bg: #261910;
+  --law-contact-glow: #4a2a18;
+  --law-contact-bg: #1a1614;
+  --law-form-bg: #14110f;
+  --law-input-bg: #211a16;
+  --law-input-focus: #2a201a;
+  --law-presence-from: #261c16;
+  --law-process-from: #2a1e18;
+  --law-process-to: #171412;
+  --law-faq-help-from: #2c2018;
+  --law-step-from: #241c18;
+  --law-step-num-bg: #1c1612;
+  --law-bg: #120f0e;
+  --law-surface: #1c1816;
+  --law-muted: #b6b0aa;
+}
+
+.gym-page .law-brand img {
+  filter: hue-rotate(-145deg) saturate(1.4);
+}
