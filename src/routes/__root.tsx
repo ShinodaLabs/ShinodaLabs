@@ -8,6 +8,10 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { DeferredAnalytics } from "@/components/site/DeferredAnalytics";
+import {
+  GOOGLE_TAG_MANAGER_ID,
+  googleTagManagerScript,
+} from "@/lib/google-tag-manager";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -95,6 +99,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "/sitemap.xml",
       },
     ],
+    scripts: googleTagManagerScript
+      ? [
+          {
+            children: googleTagManagerScript,
+          },
+        ]
+      : [],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -109,6 +120,17 @@ function RootShell({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        {GOOGLE_TAG_MANAGER_ID ? (
+          <noscript>
+            <iframe
+              src={"https://www.googletagmanager.com/ns.html?id=" + GOOGLE_TAG_MANAGER_ID}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+              title="Google Tag Manager"
+            />
+          </noscript>
+        ) : null}
         {children}
         <Scripts />
         <DeferredAnalytics />
