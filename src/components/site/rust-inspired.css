@@ -160,6 +160,10 @@ html.custom-cursor-enabled .sl-site * {
   display: block;
   height: 36px;
   width: auto;
+  filter: hue-rotate(58deg) saturate(1.2);
+}
+.sl-dark .sl-brand {
+  filter: hue-rotate(56deg) saturate(1.15) brightness(1.06);
 }
 .sl-desktop-nav {
   display: flex;

@@ -13,11 +13,10 @@ import {
   ShieldCheck,
   Zap,
 } from "@/components/site/LucideAnimated";
-import legalImage from "@/assets/project-5.webp";
-
 import { lawyerCampaign, lawyerFaq } from "@/content/lawyer-landing";
 import { SITE_EMAIL, SITE_PHONE } from "@/lib/seo";
 import { SmoothScroll } from "@/components/site/SmoothScroll";
+import { LandingFooter } from "@/components/site/LandingFooter";
 import "./lawyer-landing.css";
 
 function track(event: string, placement?: string) {
@@ -201,10 +200,10 @@ export function LawyerLanding() {
                 <ShieldCheck size={13} aria-hidden="true" />
               </div>
               <img
-                src={legalImage}
-                alt="Projeto Oliveira & Martins Advogados: exemplo de presença digital com identidade visual sóbria"
-                width="1200"
-                height="900"
+                src="/images/hero-landing-page-advogados.webp"
+                alt="Prévia de um site para escritório de advocacia: identidade visual sóbria, áreas de atuação e contato em destaque"
+                width={1536}
+                height={1024}
                 fetchPriority="high"
               />
             </div>
@@ -546,14 +545,10 @@ export function LawyerLanding() {
           </details>
         </section>
       </main>
-      <footer className="law-footer law-wrap">
-        <a className="law-brand" href="/" aria-label="ShinodaLabs — início">
-          <img src="/logo.png" alt="" width={171} height={38} decoding="async" />
-        </a>
-        <p>Design com intenção. Código com precisão.</p>
-        <a href="#privacidade">Privacidade</a>
-        <span>© {new Date().getFullYear()} ShinodaLabs</span>
-      </footer>
+      <LandingFooter
+        studioLine="Estúdio digital · soluções para advocacia"
+        onContactClick={() => track("cta_click", "footer")}
+      />
       <div className="law-mobile-cta" aria-hidden={!stickyCta} inert={!stickyCta || undefined}>
         <CTA placement="mobile" />
       </div>

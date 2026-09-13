@@ -85,7 +85,7 @@ Seu site acompanha as próximas etapas da empresa. Melhorias, novas páginas e a
 
 ## Tipos de sites
 
-A ShinodaLabs cria sites e landing pages sob medida para diferentes mercados. Cada nicho tem uma página dedicada com o posicionamento, o formato e o caminho de contato adequados.
+A ShinodaLabs cria sites institucionais e landing pages sob medida para diferentes mercados. Há páginas dedicadas com o posicionamento, o formato e o caminho de contato de cada segmento.
 
 - Sites para advogados: Landing pages e sites institucionais para advogados e escritórios que precisam transmitir credibilidade, apresentar áreas de atuação e facilitar o contato. https://shinodalabs.com/landing-page-advogados
 - Sites para academias: Landing pages e sites institucionais para academias, estúdios e boxes que precisam apresentar estrutura, modalidades e facilitar o contato. https://shinodalabs.com/landing-page-academias

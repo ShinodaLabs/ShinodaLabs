@@ -16,7 +16,7 @@ export function Footer() {
                 alt="ShinodaLabs"
                 width={171}
                 height={38}
-                className="h-8 w-auto"
+                className="h-8 w-auto [filter:hue-rotate(58deg)_saturate(1.2)]"
                 decoding="async"
               />
             </div>

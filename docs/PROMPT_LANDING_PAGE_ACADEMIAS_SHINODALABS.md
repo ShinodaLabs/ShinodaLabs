@@ -107,7 +107,7 @@ Ordem a replicar:
 07. FAQ (objeções reais + card lateral de ajuda)
 08. Formulário / conversa (WhatsApp)
 09. Privacidade neste contato
-10. Footer mínimo
+10. Footer (marca + navegação da página + estúdio; centralizado no mobile, inclusive o logo)
 11. CTA sticky no mobile (aparece depois da seção de presença; some no formulário)
 
 Não obrigar: pricing, depoimentos inventados, logos de clientes fictícios, comparação longa, processo de 8 etapas, seção "para quem não é" agressiva, portfólio com cases inventados de academias.
@@ -161,7 +161,7 @@ Select de momento (adaptar):
 - `:focus-visible` consistente;
 - CTA sticky com `aria-hidden` / `inert` quando oculta;
 - Labels explícitos; campos com `autocomplete` e `maxLength`;
-- Âncoras `#conversa` e `#privacidade`.
+- Âncoras `#diferenca`, `#entrega`, `#duvidas-titulo`, `#conversa` e `#privacidade`.
 
 ### Tracking
 
@@ -203,8 +203,10 @@ Seguir a estrutura da landing de advogados:
 - Rota: `src/routes/landing-page-academias.tsx`
 - UI: `src/components/gyms/` (ou `academias/`)
 - Copy/FAQ: `src/content/gym-landing.ts`
-- CSS scoped com prefixo próprio (ex.: `.gym-page`), reutilizando a linguagem visual (dark zinc, teal, grid, glow, orbit)
-- Reutilizar `SmoothScroll`, `LucideAnimated`, `SITE_EMAIL`, `SITE_PHONE`, `buildMetaTags`
+- CSS scoped no wrapper combinado `.law-page.gym-page` (reusa `lawyer-landing.css` + `gym-landing.css`); acento laranja, não o teal dos advogados
+- Footer compartilhado: `src/components/site/LandingFooter.tsx` (prop `studioLine` com a linha de nicho)
+- Tema de acento: variáveis `--law-*` no seletor composto `.law-page.{prefixo}-page` (duas classes). Não usar só `.{prefixo}-page` com a mesma especificidade de `.law-page`: no deploy o CSS da LP de advogados pode ser concatenado depois e a página herda o teal
+- Reutilizar `SmoothScroll`, `LucideAnimated`, `LandingFooter`, `SITE_EMAIL`, `SITE_PHONE`, `buildMetaTags`
 - Não transformar a página no visual de um site de academia
 
 ---
@@ -476,6 +478,22 @@ Perguntas reais do gestor + card "tem uma dúvida específica?".
 Padrão WhatsApp da landing de advogados.
 
 ## 09 — PRIVACIDADE + FOOTER + STICKY MOBILE CTA
+
+Privacidade: bloco `<details>` com id `#privacidade` imediatamente após o formulário.
+
+Footer publicado (não é faixa mínima). Usar o componente compartilhado `LandingFooter` em `src/components/site/LandingFooter.tsx`.
+
+Desktop — três colunas:
+- Marca: logo ShinodaLabs (link `/`), tagline «Design com intenção. Código com precisão.», linha de nicho em uppercase com a cor de acento (`Estúdio digital · soluções para …`);
+- Nesta página: A diferença (`#diferenca`), O que entregamos (`#entrega`), Dúvidas (`#duvidas-titulo`), Conversar (`#conversa`);
+- Estúdio: ShinodaLabs (`/`), e-mail oficial (`SITE_EMAIL`), Vamos conversar (`#conversa`, evento `cta_click` com `placement: footer`), Privacidade (`#privacidade`);
+- Barra inferior: `© {ano} ShinodaLabs. Todos os direitos reservados.` + «Voltar ao site».
+
+Mobile (abaixo de ~760px):
+- Uma coluna, tudo centralizado — inclusive o logo. O link `.law-brand` é `display: flex`; no bloco da marca usar `align-items: center` e `justify-content: center` no logo, senão ele fica à esquerda enquanto o texto centraliza;
+- Reservar margem inferior quando o CTA sticky estiver visível.
+
+Sticky: CTA fixo no mobile após a seção de presença; oculto (`aria-hidden` / `inert`) no formulário.
 
 ---
 
@@ -855,12 +873,11 @@ A landing page deve seguir o posicionamento visual premium da ShinodaLabs — o 
 
 Direção estética:
 
-- Dark premium;
-- Zinc/black (`#101214` / surface `#181c1e`);
+- Dark premium com base um pouco mais quente (`#120f0e` / surface `#1c1816`);
 - Branco off-white;
-- Teal/neon (`#5ee3bd` ou equivalente da marca);
-- Gradientes e glows em teal quando apropriados;
-- Grid, órbitas e backdrop já usados na LP de advogados;
+- Acento laranja (`#ff7a3c` e derivados `--law-accent-*`), definido em `.law-page.gym-page` — não reutilizar o teal `#5ee3bd` da LP de advogados;
+- Gradientes e glows no glow laranja (`--law-glow`), não teal;
+- Grid, órbitas e backdrop do sistema da LP de advogados, com as variáveis de nicho;
 - Visual SaaS / high-end digital studio;
 - Tipografia moderna, display forte no H1/H2;
 - Grid refinado;
@@ -871,7 +888,7 @@ Direção estética:
 
 NÃO transformar a página em um "site de academia":
 
-- Sem neon laranja/vermelho de academia low-cost;
+- Sem neon de academia low-cost nem paleta teal “advogados”; o laranja da LP é o acento ShinodaLabs para este nicho, não um tema de box;
 - Sem foto de stock de abdomen e halteres no fundo inteiro;
 - Sem countdown de black friday de matrícula;
 - Sem tipografia "impact/sport" genérica;
@@ -919,7 +936,8 @@ Criar:
 - Tipografia responsiva;
 - Imagens responsivas;
 - Formulário confortável, uma coluna, alvos de toque ≥ 44px;
-- Header compacto (a nota de nicho pode sumir no mobile, como na LP de advogados).
+- Header compacto (a nota de nicho pode sumir no mobile, como na LP de advogados);
+- Footer em coluna no mobile, com texto e logo centralizados.
 
 ---
 
@@ -1159,7 +1177,7 @@ Copy completa de todas as seções, no tom da LP de advogados.
 
 ## 5. Design System
 
-Reutilizar o da LP de advogados (cores, tipografia, botões, cards, FAQ, form, sticky CTA), com prefixo CSS próprio.
+Reutilizar o da LP de advogados (tipografia, botões, cards, FAQ, form, sticky CTA, footer `LandingFooter`), com tokens de acento **laranja** em `.law-page.gym-page` — especificidade maior que `.law-page`, senão o deploy herda o teal.
 
 ## 6. CRO
 

@@ -13,11 +13,10 @@ import {
   ShieldCheck,
   Zap,
 } from "@/components/site/LucideAnimated";
-import gymImage from "@/assets/project-gym.webp";
-
 import { gymCampaign, gymFaq, gymGoals, gymWhatsAppMessage } from "@/content/gym-landing";
 import { SITE_EMAIL, SITE_PHONE } from "@/lib/seo";
 import { SmoothScroll } from "@/components/site/SmoothScroll";
+import { LandingFooter } from "@/components/site/LandingFooter";
 import "@/components/lawyers/lawyer-landing.css";
 import "./gym-landing.css";
 
@@ -198,14 +197,14 @@ export function GymLanding() {
             <div className="law-browser">
               <div className="law-browser-bar">
                 <span aria-hidden="true">● ● ●</span>
-                <span>Pulse Studio · Fitness</span>
+                <span>Evolution Fitness · Fitness</span>
                 <ShieldCheck size={13} aria-hidden="true" />
               </div>
               <img
-                src={gymImage}
-                alt="Prévia de um site para academia: foto real do espaço com navegação e chamada para agendar visita"
-                width="1200"
-                height="900"
+                src="/images/hero-landing-page-academia.webp"
+                alt="Prévia de um site para academia: foto do espaço com navegação e chamada para agendar visita"
+                width={1536}
+                height={1024}
                 fetchPriority="high"
               />
             </div>
@@ -546,14 +545,10 @@ export function GymLanding() {
           </details>
         </section>
       </main>
-      <footer className="law-footer law-wrap">
-        <a className="law-brand" href="/" aria-label="ShinodaLabs — início">
-          <img src="/logo.png" alt="" width={171} height={38} decoding="async" />
-        </a>
-        <p>Design com intenção. Código com precisão.</p>
-        <a href="#privacidade">Privacidade</a>
-        <span>© {new Date().getFullYear()} ShinodaLabs</span>
-      </footer>
+      <LandingFooter
+        studioLine="Estúdio digital · soluções para academias"
+        onContactClick={() => track("cta_click", "footer")}
+      />
       <div className="law-mobile-cta" aria-hidden={!stickyCta} inert={!stickyCta || undefined}>
         <CTA placement="mobile" />
       </div>

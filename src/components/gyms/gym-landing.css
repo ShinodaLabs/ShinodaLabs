@@ -1,4 +1,4 @@
-.gym-page {
+.law-page.gym-page {
   --law-accent: #ff7a3c;
   --law-accent-hover: #ff9b68;
   --law-accent-bright: #ffc4a0;
@@ -31,6 +31,6 @@
   --law-muted: #b6b0aa;
 }
 
-.gym-page .law-brand img {
+.law-page.gym-page .law-brand img {
   filter: hue-rotate(-145deg) saturate(1.4);
 }

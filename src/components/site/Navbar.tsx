@@ -76,7 +76,7 @@ export function Navbar() {
               aria-hidden
               width={152}
               height={34}
-              className="h-7 w-auto sm:h-8"
+              className="h-7 w-auto sm:h-8 [filter:hue-rotate(58deg)_saturate(1.2)]"
               decoding="async"
             />
           </a>

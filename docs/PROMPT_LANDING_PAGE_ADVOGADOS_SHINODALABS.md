@@ -738,6 +738,15 @@ Criar:
 
 Avaliar CTA sticky no mobile.
 
+Footer publicado (implementação atual neste repositório):
+
+- Componente compartilhado `src/components/site/LandingFooter.tsx`, usado também pelas outras landings de nicho;
+- Desktop: três colunas (marca + nesta página + estúdio) e barra inferior com copyright e «Voltar ao site»;
+- Conteúdo da marca: logo, tagline «Design com intenção. Código com precisão.», linha `Estúdio digital · soluções para advocacia`;
+- Links da página: `#diferenca`, `#entrega`, `#duvidas-titulo`, `#conversa`; estúdio: `/`, e-mail, conversa, `#privacidade`;
+- Mobile (~760px): coluna única, tudo centralizado **incluindo o logo** (o `.law-brand` é flex — centralizar no bloco da marca, senão o logo fica à esquerda);
+- Margem extra no footer quando o CTA sticky estiver visível.
+
 ---
 
 # 30. PERFORMANCE

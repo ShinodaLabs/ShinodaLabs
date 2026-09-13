@@ -220,7 +220,7 @@ export function RustInspiredSite() {
             <dl className="sl-stats">
               {[
                 ["7+", "ANOS DE EXPERIÊNCIA"],
-                ["Nichos", "SITES PARA O SEU MERCADO"],
+                ["LP + site", "PARA O SEU MERCADO"],
                 ["Sob medida", "DESIGN & DESENVOLVIMENTO"],
                 ["24h", "PRAZO PARA PRIMEIRO CONTATO"],
               ].map(([value, label]) => (
