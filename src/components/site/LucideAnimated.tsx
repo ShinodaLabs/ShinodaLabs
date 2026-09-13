@@ -1,5 +1,12 @@
-import { useEffect, useRef } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
+import { forwardRef, useEffect, useImperativeHandle, useRef, type HTMLAttributes } from "react";
+import { motion, useAnimation, useInView, useReducedMotion, type Variants } from "framer-motion";
+import {
+  ArrowDown as StaticArrowDown,
+  Check as StaticCheck,
+  MessageCircle as StaticMessageCircle,
+  Smartphone as StaticSmartphone,
+  type LucideIcon,
+} from "lucide-react";
 import { EarthIcon } from "@/components/icons/lucide-animated/earth";
 import { LayersIcon } from "@/components/icons/lucide-animated/layers";
 import { FolderCodeIcon } from "@/components/icons/lucide-animated/folder-code";
@@ -20,21 +27,21 @@ function interactiveIcon(Icon: typeof RocketIcon) {
     useEffect(() => {
       const controller = handle.current;
       if (!controller) return;
-      let restartTimer: ReturnType<typeof setTimeout> | undefined;
+      if (reduced) {
+        controller.stopAnimation();
+        return;
+      }
       const play = () => {
         if (!visible || document.hidden) return;
-        clearTimeout(restartTimer);
-        controller.stopAnimation();
-        restartTimer = setTimeout(() => controller.startAnimation(), 180);
+        handle.current?.startAnimation();
       };
       if (visible) play();
       else controller.stopAnimation();
-      // Replay one-shot icons too; reduced motion uses longer rests between cycles.
-      const interval = visible ? setInterval(play, reduced ? 8000 : 4500) : undefined;
+      // Replay one-shot icons while visible and motion is enabled.
+      const interval = visible ? setInterval(play, 2200) : undefined;
       const target =
         element.current?.closest("a, button, article, .sl-launch-diagram > div") ?? element.current;
       const visibility = () => {
-        clearTimeout(restartTimer);
         if (document.hidden) controller.stopAnimation();
         else play();
       };
@@ -42,8 +49,8 @@ function interactiveIcon(Icon: typeof RocketIcon) {
       target?.addEventListener("focusin", play);
       document.addEventListener("visibilitychange", visibility);
       return () => {
-        clearTimeout(restartTimer);
         clearInterval(interval);
+        controller.stopAnimation();
         target?.removeEventListener("pointerenter", play);
         target?.removeEventListener("focusin", play);
         document.removeEventListener("visibilitychange", visibility);
@@ -67,3 +74,57 @@ export const Zap = interactiveIcon(ZapIcon);
 export const Rocket = interactiveIcon(RocketIcon);
 export const ArrowRight = interactiveIcon(ArrowRightIcon);
 export const ArrowUpRight = interactiveIcon(ArrowUpRightIcon);
+
+// Additional symbols share the home page's visibility, replay and reduced-motion controls.
+function detailIcon(Icon: LucideIcon, variants: Variants) {
+  const DetailIcon = forwardRef<
+    { startAnimation: () => void; stopAnimation: () => void },
+    HTMLAttributes<HTMLSpanElement> & { size?: number }
+  >(({ size = 24, ...props }, ref) => {
+    const controls = useAnimation();
+    useImperativeHandle(
+      ref,
+      () => ({
+        startAnimation: () => {
+          void controls.start("animate");
+        },
+        stopAnimation: () => {
+          controls.stop();
+          controls.set("normal");
+        },
+      }),
+      [controls],
+    );
+    return (
+      <span {...props}>
+        <motion.span
+          style={{ display: "inline-flex" }}
+          initial="normal"
+          animate={controls}
+          variants={variants}
+        >
+          <Icon size={size} />
+        </motion.span>
+      </span>
+    );
+  });
+  DetailIcon.displayName = "AnimatedDetailIcon";
+  return interactiveIcon(DetailIcon);
+}
+
+export const ArrowDown = detailIcon(StaticArrowDown, {
+  normal: { y: 0 },
+  animate: { y: [0, 4, 0], transition: { duration: 0.8 } },
+});
+export const Check = detailIcon(StaticCheck, {
+  normal: { scale: 1 },
+  animate: { scale: [1, 0.8, 1.15, 1], transition: { duration: 0.6 } },
+});
+export const MessageCircle = detailIcon(StaticMessageCircle, {
+  normal: { rotate: 0, scale: 1 },
+  animate: { rotate: [0, -8, 8, 0], scale: [1, 1.1, 1], transition: { duration: 0.8 } },
+});
+export const Smartphone = detailIcon(StaticSmartphone, {
+  normal: { rotate: 0 },
+  animate: { rotate: [0, -7, 7, -4, 4, 0], transition: { duration: 0.7 } },
+});

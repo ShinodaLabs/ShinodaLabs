@@ -9,8 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LandingPageAdvogadosRouteImport } from './routes/landing-page-advogados'
 import { Route as IndexRouteImport } from './routes/index'
 
+const LandingPageAdvogadosRoute = LandingPageAdvogadosRouteImport.update({
+  id: '/landing-page-advogados',
+  path: '/landing-page-advogados',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +25,39 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/landing-page-advogados': typeof LandingPageAdvogadosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/landing-page-advogados': typeof LandingPageAdvogadosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/landing-page-advogados': typeof LandingPageAdvogadosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/landing-page-advogados'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/landing-page-advogados'
+  id: '__root__' | '/' | '/landing-page-advogados'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LandingPageAdvogadosRoute: typeof LandingPageAdvogadosRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/landing-page-advogados': {
+      id: '/landing-page-advogados'
+      path: '/landing-page-advogados'
+      fullPath: '/landing-page-advogados'
+      preLoaderRoute: typeof LandingPageAdvogadosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LandingPageAdvogadosRoute: LandingPageAdvogadosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
