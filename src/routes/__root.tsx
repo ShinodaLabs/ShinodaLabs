@@ -7,11 +7,8 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { GoogleTracking } from "@/components/analytics/GoogleTracking";
 import { DeferredAnalytics } from "@/components/site/DeferredAnalytics";
-import {
-  googleTagScript,
-  googleTagScriptUrl,
-} from "@/lib/google-tag-manager";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -99,17 +96,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "/sitemap.xml",
       },
     ],
-    scripts: googleTagScript && googleTagScriptUrl
-      ? [
-          {
-            async: true,
-            src: googleTagScriptUrl,
-          },
-          {
-            children: googleTagScript,
-          },
-        ]
-      : [],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -126,6 +112,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <Scripts />
+        <GoogleTracking />
         <DeferredAnalytics />
       </body>
     </html>
