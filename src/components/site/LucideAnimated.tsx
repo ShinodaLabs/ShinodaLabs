@@ -22,35 +22,37 @@ function interactiveIcon(Icon: typeof RocketIcon) {
   function InteractiveIcon({ size = 24, className = "" }: { size?: number; className?: string }) {
     const element = useRef<HTMLSpanElement>(null);
     const handle = useRef<{ startAnimation: () => void; stopAnimation: () => void }>(null);
-    const visible = useInView(element);
+    const visible = useInView(element, { amount: 0.15, margin: "120px", once: false });
     const reduced = useReducedMotion();
     useEffect(() => {
-      const controller = handle.current;
-      if (!controller) return;
       if (reduced) {
-        controller.stopAnimation();
+        handle.current?.stopAnimation();
         return;
       }
       const play = () => {
-        if (!visible || document.hidden) return;
+        if (document.hidden) return;
         handle.current?.startAnimation();
       };
-      if (visible) play();
-      else controller.stopAnimation();
-      // Replay one-shot icons while visible and motion is enabled.
-      const interval = visible ? setInterval(play, 2200) : undefined;
+      const autoPlay = () => {
+        if (!visible) return;
+        play();
+      };
+      autoPlay();
+      const interval = visible ? setInterval(autoPlay, 2200) : undefined;
       const target =
-        element.current?.closest("a, button, article, .sl-launch-diagram > div") ?? element.current;
+        element.current?.closest(
+          "a, button, article, summary, li, .law-icon, .law-faq-help, .sl-launch-diagram > div",
+        ) ?? element.current;
       const visibility = () => {
-        if (document.hidden) controller.stopAnimation();
-        else play();
+        if (document.hidden) handle.current?.stopAnimation();
+        else autoPlay();
       };
       target?.addEventListener("pointerenter", play);
       target?.addEventListener("focusin", play);
       document.addEventListener("visibilitychange", visibility);
       return () => {
         clearInterval(interval);
-        controller.stopAnimation();
+        handle.current?.stopAnimation();
         target?.removeEventListener("pointerenter", play);
         target?.removeEventListener("focusin", play);
         document.removeEventListener("visibilitychange", visibility);

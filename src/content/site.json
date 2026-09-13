@@ -57,6 +57,16 @@
       "points": ["Novas funcionalidades", "Manutenção", "Melhorias de experiência"]
     }
   ],
+  "siteTypes": [
+    {
+      "name": "Sites para advogados",
+      "category": "Advocacia",
+      "text": "Landing pages e sites institucionais para advogados e escritórios que precisam transmitir credibilidade, apresentar áreas de atuação e facilitar o contato.",
+      "href": "/landing-page-advogados",
+      "image": "/images/landing-pages-advogados.webp",
+      "code": "Landing page · Site institucional"
+    }
+  ],
   "faq": [
     {
       "question": "O que a ShinodaLabs faz?",

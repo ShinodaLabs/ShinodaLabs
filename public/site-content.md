@@ -83,15 +83,13 @@ Seu site acompanha as próximas etapas da empresa. Melhorias, novas páginas e a
 4. Engenharia: desenvolvimento com tipagem forte, revisão e performance.
 5. Lançamento & evolução: deploy, SEO técnico e próximos passos do produto.
 
-## Projetos selecionados
+## Tipos de sites
 
-- Alma & Pata: pet care.
-- Lumière: saúde e bem-estar.
-- VLTGE: fitness.
-- Aurelius Imobiliária: mercado imobiliário.
-- Oliveira & Martins: advocacia.
+A ShinodaLabs cria sites e landing pages sob medida para diferentes mercados. Cada nicho tem uma página dedicada com o posicionamento, o formato e o caminho de contato adequados.
 
-Os links para os projetos estão em https://shinodalabs.com/#work.
+- Sites para advogados: Landing pages e sites institucionais para advogados e escritórios que precisam transmitir credibilidade, apresentar áreas de atuação e facilitar o contato. https://shinodalabs.com/landing-page-advogados
+
+Os tipos de sites estão em https://shinodalabs.com/#work.
 
 ## Perguntas frequentes
 

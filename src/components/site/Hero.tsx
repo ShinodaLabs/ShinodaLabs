@@ -75,7 +75,7 @@ export function Hero() {
               href="#work"
               className="group inline-flex w-full items-center justify-center gap-2 border border-border px-7 py-3.5 text-sm font-medium text-muted-foreground transition-all duration-300 hover:border-teal hover:text-foreground sm:w-auto"
             >
-              Ver projetos
+              Ver tipos de sites
               <ArrowRight
                 className="h-3.5 w-3.5 text-primary transition-transform duration-300 group-hover:translate-x-1"
                 aria-hidden
@@ -88,7 +88,7 @@ export function Hero() {
       <a
         href="#work"
         className="hero-scroll-indicator absolute bottom-6 left-1/2 z-10 flex min-h-11 min-w-11 -translate-x-1/2 flex-col items-center justify-center gap-2 p-2 text-muted-foreground transition-colors hover:text-foreground"
-        aria-label="Rolar para os projetos"
+        aria-label="Rolar para os tipos de sites"
       >
         <span className="font-mono text-[11px] uppercase tracking-[0.24em]">Scroll</span>
         <span className="flex h-8 w-5 items-start justify-center rounded-full border border-white/25 pt-1.5">

@@ -17,6 +17,7 @@ import legalImage from "@/assets/project-5.webp";
 
 import { lawyerCampaign, lawyerFaq } from "@/content/lawyer-landing";
 import { SITE_EMAIL, SITE_PHONE } from "@/lib/seo";
+import { SmoothScroll } from "@/components/site/SmoothScroll";
 import "./lawyer-landing.css";
 
 function track(event: string, placement?: string) {
@@ -75,6 +76,8 @@ const services = [
 
 export function LawyerLanding() {
   const started = useRef(false);
+  const presenceRef = useRef<HTMLElement>(null);
+  const [stickyCta, setStickyCta] = useState(false);
   const [handoff, setHandoff] = useState("");
 
   useEffect(() => {
@@ -93,6 +96,28 @@ export function LawyerLanding() {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const presence = presenceRef.current;
+    const conversa = document.getElementById("conversa");
+    if (!presence) return;
+
+    const update = () => {
+      const reachedPresence = presence.getBoundingClientRect().top <= window.innerHeight * 0.55;
+      const atForm = conversa
+        ? conversa.getBoundingClientRect().top < window.innerHeight * 0.72
+        : false;
+      setStickyCta(reachedPresence && !atForm);
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
   function submit(event: FormEvent<HTMLFormElement>) {
@@ -116,17 +141,14 @@ export function LawyerLanding() {
   }
 
   return (
-    <div className="law-page">
+    <div className={`law-page${stickyCta ? " law-sticky-cta-on" : ""}`}>
+      <SmoothScroll />
       <a className="law-skip" href="#conteudo">
         Pular para o conteúdo
       </a>
       <header className="law-header law-wrap">
         <a href="/" className="law-brand" aria-label="ShinodaLabs — início">
-          <span className="law-brand-mark" aria-hidden="true">
-            s<span>l</span>.
-          </span>
-          shinoda<span>labs</span>
-          <span className="law-brand-dot">®</span>
+          <img src="/logo.png" alt="" width={171} height={38} decoding="async" />
         </a>
         <span className="law-header-note">ESTÚDIO DIGITAL / SOLUÇÕES PARA ADVOCACIA</span>
         <a
@@ -211,7 +233,11 @@ export function LawyerLanding() {
           </div>
         </div>
 
-        <section className="law-section law-wrap law-presence" aria-labelledby="diferenca">
+        <section
+          ref={presenceRef}
+          className="law-section law-wrap law-presence"
+          aria-labelledby="diferenca"
+        >
           <div className="law-presence-heading">
             <div>
               <p className="law-eyebrow">01 / SEU ESCRITÓRIO NA INTERNET</p>
@@ -304,9 +330,11 @@ export function LawyerLanding() {
             </div>
             <div className="law-services">
               {services.map(([Icon, title, description], index) => (
-                <article key={title}>
+                <article className="law-service-card" key={title}>
                   <div className="law-service-top">
-                    <Icon size={25} />
+                    <span className="law-service-icon">
+                      <Icon size={25} />
+                    </span>
                     <span>0{index + 1}</span>
                   </div>
                   <h3>{title}</h3>
@@ -519,15 +547,14 @@ export function LawyerLanding() {
         </section>
       </main>
       <footer className="law-footer law-wrap">
-        <a className="law-brand" href="/">
-          shinoda<span>labs</span>
-          <span className="law-brand-dot">®</span>
+        <a className="law-brand" href="/" aria-label="ShinodaLabs — início">
+          <img src="/logo.png" alt="" width={171} height={38} decoding="async" />
         </a>
         <p>Design com intenção. Código com precisão.</p>
         <a href="#privacidade">Privacidade</a>
         <span>© {new Date().getFullYear()} ShinodaLabs</span>
       </footer>
-      <div className="law-mobile-cta">
+      <div className="law-mobile-cta" aria-hidden={!stickyCta} inert={!stickyCta || undefined}>
         <CTA placement="mobile" />
       </div>
     </div>

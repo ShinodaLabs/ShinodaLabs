@@ -13,7 +13,7 @@ Site oficial em português do Brasil: https://shinodalabs.com/
 - [Sobre o estúdio](https://shinodalabs.com/#about): design e desenvolvimento com atenção aos detalhes.
 - [Soluções digitais](https://shinodalabs.com/#services): serviços oferecidos.
 - [Processo](https://shinodalabs.com/#process): discovery, estratégia, design, engenharia e lançamento.
-- [Projetos](https://shinodalabs.com/#work): Alma & Pata, Lumière, VLTGE, Aurelius Imobiliária e Oliveira & Martins.
+- [Tipos de sites](https://shinodalabs.com/#work): sites e landing pages por mercado, começando por [sites para advogados](https://shinodalabs.com/landing-page-advogados).
 - [Perguntas frequentes](https://shinodalabs.com/#faq): respostas sobre o estúdio e como começar.
 - [Contato](https://shinodalabs.com/#contact): WhatsApp e e-mail.
 `;
@@ -40,15 +40,13 @@ ${content.services.map((s) => `### ${s.name}\n\n${s.description}\n\n${s.points.m
 4. Engenharia: desenvolvimento com tipagem forte, revisão e performance.
 5. Lançamento & evolução: deploy, SEO técnico e próximos passos do produto.
 
-## Projetos selecionados
+## Tipos de sites
 
-- Alma & Pata: pet care.
-- Lumière: saúde e bem-estar.
-- VLTGE: fitness.
-- Aurelius Imobiliária: mercado imobiliário.
-- Oliveira & Martins: advocacia.
+A ShinodaLabs cria sites e landing pages sob medida para diferentes mercados. Cada nicho tem uma página dedicada com o posicionamento, o formato e o caminho de contato adequados.
 
-Os links para os projetos estão em https://shinodalabs.com/#work.
+${content.siteTypes.map((siteType) => `- ${siteType.name}: ${siteType.text} https://shinodalabs.com${siteType.href}`).join("\n")}
+
+Os tipos de sites estão em https://shinodalabs.com/#work.
 
 ## Perguntas frequentes
 
@@ -67,4 +65,4 @@ await Promise.all([
   writeFile(new URL("public/llms.txt", root), summary),
   writeFile(new URL("public/site-content.md", root), full),
 ]);
-console.log("Generated llms.txt and site-content.md from shared service and FAQ content.");
+console.log("Generated llms.txt and site-content.md from shared site content.");

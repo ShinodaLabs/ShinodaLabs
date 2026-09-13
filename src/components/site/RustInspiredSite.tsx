@@ -1,4 +1,6 @@
 import siteContent from "@/content/site.json";
+import { Link } from "@tanstack/react-router";
+import type { FileRouteTypes } from "@/routeTree.gen";
 import {
   Globe,
   Layers,
@@ -13,11 +15,6 @@ import {
 } from "./LucideAnimated";
 import { useEffect, useRef, useState } from "react";
 import { Check, ChevronDown, Github, Menu, Moon, Sun, X } from "lucide-react";
-import p1 from "@/assets/project-1.webp";
-import p2 from "@/assets/project-2.webp";
-import p3 from "@/assets/project-3.webp";
-import p4 from "@/assets/project-4.webp";
-import p5 from "@/assets/project-5.webp";
 import avatar from "@/assets/avatar.webp";
 import "./rust-inspired.css";
 import { StackGlobe } from "./StackGlobe";
@@ -32,49 +29,17 @@ const services = siteContent.services.map((service, index) => ({
   icon: serviceIcons[index],
 }));
 
-const projects = [
-  {
-    image: p1,
-    name: "Alma & Pata",
-    category: "Pet care",
-    text: "Uma experiência acolhedora para quem cuida de quem faz parte da família.",
-    url: "https://alma-pata.vercel.app/",
-  },
-  {
-    image: p3,
-    name: "Lumière",
-    category: "Saúde & bem-estar",
-    text: "Precisão e cuidado em uma presença digital para clínica odontológica.",
-    url: "https://lumiere-self-psi.vercel.app/",
-  },
-  {
-    image: p2,
-    name: "VLTGE",
-    category: "Fitness",
-    text: "Design de impacto para uma academia de alta performance.",
-    url: "https://voltage-academia.vercel.app/",
-  },
-  {
-    image: p4,
-    name: "Aurelius Imobiliária",
-    category: "Mercado imobiliário",
-    text: "Uma vitrine digital para conectar pessoas ao próximo endereço.",
-    url: "https://aurelius-imobiliaria.vercel.app/",
-  },
-  {
-    image: p5,
-    name: "Oliveira & Martins",
-    category: "Advocacia",
-    text: "Clareza e credibilidade para um escritório de advocacia.",
-    url: "https://oliveira-martins-advogados.vercel.app/",
-  },
-];
+const siteTypes = siteContent.siteTypes;
 function Brand() {
   return (
-    <span className="sl-brand">
-      SHINODA<span>LABS</span>
-      <span className="sl-brand-dot">®</span>
-    </span>
+    <img
+      className="sl-brand"
+      src="/logo.png"
+      alt=""
+      width={171}
+      height={38}
+      decoding="async"
+    />
   );
 }
 function SectionTitle({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
@@ -165,7 +130,7 @@ export function RustInspiredSite() {
                 ))}
               </div>
             </div>
-            <a href="#work">Projetos</a>
+            <a href="#work">Sites</a>
             <a href="#about">Sobre o estúdio</a>
             <a href="#process">Como funciona</a>
             <a href="#contact">Contato</a>
@@ -203,7 +168,7 @@ export function RustInspiredSite() {
           <nav className="sl-mobile-nav" id="sl-mobile-nav" aria-label="Navegação móvel">
             {[
               ["Serviços", "#services"],
-              ["Projetos", "#work"],
+              ["Sites", "#work"],
               ["Sobre o estúdio", "#about"],
               ["Como funciona", "#process"],
               ["Contato", "#contact"],
@@ -246,7 +211,7 @@ export function RustInspiredSite() {
                     Iniciar projeto <ArrowUpRight size={17} />
                   </a>
                   <a className="sl-button" href="#work">
-                    Ver projetos <ArrowRight size={17} />
+                    Ver tipos de sites <ArrowRight size={17} />
                   </a>
                 </div>
               </div>
@@ -255,7 +220,7 @@ export function RustInspiredSite() {
             <dl className="sl-stats">
               {[
                 ["7+", "ANOS DE EXPERIÊNCIA"],
-                ["5", "PROJETOS SELECIONADOS"],
+                ["Nichos", "SITES PARA O SEU MERCADO"],
                 ["Sob medida", "DESIGN & DESENVOLVIMENTO"],
                 ["24h", "PRAZO PARA PRIMEIRO CONTATO"],
               ].map(([value, label]) => (
@@ -515,23 +480,22 @@ export function RustInspiredSite() {
         <MotionSection className="sl-section" id="work" background="mesh">
           <div className="sl-container">
             <SectionTitle
-              eyebrow="PROJETOS SELECIONADOS"
-              title="Feitos para marcas com personalidade"
-              text="Diferentes mercados. A mesma atenção ao design, à experiência e à qualidade de cada entrega."
+              eyebrow="TIPOS DE SITES"
+              title="Sites pensados para o seu mercado"
+              text="Cada segmento pede uma presença diferente. Veja os tipos de site que construímos e escolha o que combina com o seu negócio."
             />
             <div className="sl-project-grid">
-              {projects.map((p) => (
-                <a
-                  key={p.name}
-                  href={p.url}
-                  target="_blank"
-                  rel="noreferrer"
+              {siteTypes.map((siteType) => (
+                <Link
+                  key={siteType.href}
+                  to={siteType.href as FileRouteTypes["to"]}
+                  preload="intent"
                   className="sl-project"
                 >
                   <div className="sl-project-image">
                     <img
-                      src={p.image}
-                      alt={`Site ${p.name}`}
+                      src={siteType.image}
+                      alt={siteType.name}
                       loading="lazy"
                       width="800"
                       height="500"
@@ -539,14 +503,14 @@ export function RustInspiredSite() {
                   </div>
                   <div className="sl-project-content">
                     <div className="sl-project-label">
-                      <span>{p.category}</span>
+                      <span>{siteType.category}</span>
                       <ArrowUpRight size={18} />
                     </div>
-                    <h3>{p.name}</h3>
-                    <p>{p.text}</p>
-                    <code>React · TypeScript · Tailwind CSS</code>
+                    <h3>{siteType.name}</h3>
+                    <p>{siteType.text}</p>
+                    <code>{siteType.code}</code>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -663,7 +627,7 @@ export function RustInspiredSite() {
             <div>
               <h3>Estúdio</h3>
               <a href="#about">Sobre a ShinodaLabs</a>
-              <a href="#work">Projetos selecionados</a>
+              <a href="#work">Tipos de sites</a>
               <a href="#process">Nosso processo</a>
               <a href="#faq">Perguntas frequentes</a>
               <a href="#contact">Contato</a>

@@ -8,7 +8,7 @@ Site institucional da **ShinodaLabs** — estúdio digital especializado em site
 
 ## Sobre o projeto
 
-Landing page de página única com SSR (Server-Side Rendering), animações fluidas, portfólio de projetos, seções de serviços e CTA de contato. O site foi construído para excelência em Core Web Vitals, acessibilidade e indexação em buscadores.
+Landing page de página única com SSR (Server-Side Rendering), animações fluidas, tipos de sites por mercado, seções de serviços e CTA de contato. O site foi construído para excelência em Core Web Vitals, acessibilidade e indexação em buscadores.
 
 ### Destaques
 
@@ -109,10 +109,10 @@ ShinodaLabs/
 | Componente | Descrição |
 |------------|-----------|
 | `Navbar` | Navegação fixa com links âncora |
-| `Hero` | Hero principal com preview de projetos |
+| `Hero` | Hero principal com chamada para tipos de sites |
 | `Marquee` | Faixa animada de tecnologias |
 | `About` | Sobre o estúdio |
-| `Work` | Portfólio de projetos |
+| `Work` | Tipos de sites por mercado |
 | `Differentiators` | Diferenciais competitivos |
 | `CTA` | Chamada para ação / contato |
 | `Footer` | Rodapé com links e redes sociais |

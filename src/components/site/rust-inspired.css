@@ -157,22 +157,9 @@ html.custom-cursor-enabled .sl-site * {
   gap: 46px;
 }
 .sl-brand {
-  display: inline-flex;
-  align-items: baseline;
-  color: var(--sl-blue);
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -1.4px;
-  white-space: nowrap;
-}
-.sl-brand > span:first-child {
-  font-weight: 400;
-}
-.sl-brand-dot {
-  font-size: 10px;
-  align-self: flex-start;
-  margin: 4px 0 0 3px;
-  letter-spacing: 0;
+  display: block;
+  height: 36px;
+  width: auto;
 }
 .sl-desktop-nav {
   display: flex;
@@ -738,10 +725,12 @@ html.custom-cursor-enabled .sl-site * {
 }
 .sl-project-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
   gap: 20px;
 }
 .sl-project {
+  display: block;
+  color: inherit;
   border: 1px solid var(--sl-border);
   background: var(--sl-card);
   overflow: hidden;
@@ -1092,7 +1081,7 @@ html.custom-cursor-enabled .sl-site * {
     min-height: 220px;
   }
   .sl-project-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
   .sl-launch {
     grid-template-columns: 1fr;
@@ -1127,7 +1116,7 @@ html.custom-cursor-enabled .sl-site * {
     margin-top: 2px;
   }
   .sl-brand {
-    font-size: 22px;
+    height: 32px;
   }
   .sl-hero h1 {
     font-size: 43px;
